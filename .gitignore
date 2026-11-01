@@ -12,3 +12,8 @@ venv/
 Thumbs.db
 # Saídas temporárias
 *.log
+# Figuras geradas pelo notebook (ficam embebidas no .ipynb e no Drive)
+figuras/
+# Ficheiros de bloqueio do Office / LibreOffice
+~$*
+.~lock.*#
