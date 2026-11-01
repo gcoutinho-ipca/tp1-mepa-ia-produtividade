@@ -1,0 +1,3 @@
+# diffs legíveis dos notebooks: o git mostra o notebook sem outputs/metadata ao comparar,
+# mas o ficheiro commitado mantém os outputs (o GitHub renderiza os gráficos)
+*.ipynb diff=ipynb
