@@ -96,4 +96,5 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 
 - Confirmar a grafia do nome do segundo elemento: o notebook e o relatório usam «Rúbem Mendes»; a versão anterior do README usava «Rúben». O README foi alinhado com os entregáveis.
 - A capa do relatório diz «Outubro de 2026». Se a entrega for em novembro, atualizar a data em `scripts_geracao/build_report.py` e regenerar o relatório.
+- Convidar o segundo elemento para o repositório GitHub (privado). A conta conhecida é o email institucional `a4563@alunos.ipca.pt`, que não corresponde a nenhum utilizador GitHub público; o convite tem de ser feito por email na página de colaboradores do repositório (Settings › Collaborators › Add people), pois a API só aceita nomes de utilizador.
 - Preparar a defesa oral.
