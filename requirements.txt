@@ -9,3 +9,4 @@ jupyter
 nbformat
 nbconvert
 ipykernel
+python-docx   # só para gerar o relatório (scripts_geracao/build_report.py)

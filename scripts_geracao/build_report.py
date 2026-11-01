@@ -208,7 +208,8 @@ P("**Departamentos.** O departamento mais produtivo é Operações (média 79,2)
   "são pequenas face à variabilidade dentro de cada departamento (desvios-padrão entre 11,6 e 14,0).")
 P("**Simetria da produtividade.** A distribuição é só aproximadamente simétrica. A cauda esquerda é mais longa, a média fica "
   "abaixo da mediana e o gráfico Q-Q afasta-se da reta na cauda inferior (Figura 2). Na cauda direita nota-se o efeito de teto em "
-  "98. O teste de Shapiro-Wilk rejeita a normalidade (p < 0,001) e continua a rejeitá-la sem C097, em boa parte por causa desse teto.")
+  "98. O coeficiente de assimetria é −0,61 (sem C097, −0,29). O teste de Shapiro-Wilk rejeita a normalidade (p < 0,001) e continua a "
+  "rejeitá-la sem C097, em boa parte por causa desse teto.")
 F("fig_2_4_produtividade.png", "Distribuição da produtividade: histograma com média e mediana, caixa de bigodes e gráfico Q-Q.")
 P("**Máximos.** A produtividade máxima (98,0) é atingida por 13 colaboradores, com usos de IA entre 4,9 h (C014) e 16,3 h (C036); "
   "vários são muito experientes (C014, C015 e C178, com 19 anos). O colaborador que mais usa IA (C134, 25 h) tem produtividade "
@@ -289,9 +290,11 @@ P("**Um colaborador concreto (C001).** C001 (Operações) usa IA 7,7 h/semana; o
   "cerca de 10 pontos abaixo do colaborador típico com o mesmo uso. Uma explicação plausível é ter apenas 0,5 anos de experiência.")
 F("fig_5_6_residuos_m1.png", "Diagnóstico de resíduos do modelo simples (M1).")
 P("**Análise de resíduos.** No gráfico dos resíduos contra os valores ajustados não há curvatura nem padrão, e a dispersão parece "
-  "constante (Breusch-Pagan p = 0,98). A independência é assumida pelo desenho (dados transversais, um registo por colaborador). "
+  "constante (Breusch-Pagan p = 0,98). A independência é assumida pelo desenho (dados transversais, um registo por colaborador) e a "
+  "estatística de Durbin-Watson (1,84) não indica autocorrelação. "
   "A normalidade é rejeitada (Shapiro-Wilk p < 0,001): o histograma e o Q-Q mostram uma cauda esquerda longa, com C097 (resíduo −58,9) "
   "e C129 (−36,8), e uma cauda direita achatada pelo teto em 98; sem C097 o problema atenua-se (p = 0,03) e o declive mantém-se em 0,63. "
+  "A distância de Cook máxima é 0,06 (C134), muito abaixo de 1: nenhuma observação domina o ajustamento. "
   "O problema principal, contudo, está no que falta ao modelo: R² = 0,06, resíduos entre −59 e +24 pontos e uma correlação de 0,45 "
   "(p < 0,001) entre os resíduos e a experiência, sinal claro de que ficou de fora uma variável importante. O modelo descreve uma "
   "tendência média, mas não explica nem prevê a produtividade individual.")
@@ -342,11 +345,14 @@ T(["Critério", "M1: só IA", "M2: IA + 3 variáveis"], [
     ["n (mesmos casos)", "233", "233"], ["N.º de preditores", "1", "4"],
     ["R²", "0,061", "0,280"], ["R² ajustado", "0,056", "**0,267**"],
     ["Teste F global", "F(1, 231) = 14,9; p < 0,001", "F(4, 228) = 22,1; p < 0,001"],
+    ["Teste F parcial (M2 vs M1)", "—", "F(3, 228) = 23,1; p < 0,001"],
 ], larg=[5.5, 5.0, 5.5], nota="Tabela 7 – Comparação da capacidade explicativa dos modelos.")
 P("A comparação foi feita com as mesmas observações, condição necessária para comparar os R². Como o R² nunca desce quando se "
   "acrescentam variáveis, olhámos sobretudo para o R² ajustado, que penaliza o número de preditores: sobe de 0,056 para 0,267, "
   "quase cinco vezes. Com 233 observações para 4 preditores (cerca de 58 por preditor), o ganho não se explica pela complexidade "
-  "adicional. O modelo com mais variáveis apresenta, portanto, uma melhoria relevante, embora cerca de 73% da variabilidade fique por explicar.")
+  "adicional, e o teste F parcial aos modelos encaixados confirma que as três variáveis acrescentadas melhoram significativamente o "
+  "ajustamento (F(3, 228) = 23,1; p < 0,001). O modelo com mais variáveis apresenta, portanto, uma melhoria relevante, embora cerca de "
+  "73% da variabilidade fique por explicar.")
 H("7.5. Diagnóstico do modelo múltiplo", 2)
 F("fig_6_6_residuos_m2.png", "Diagnóstico de resíduos do modelo múltiplo (M2).")
 P("**Associação entre as explicativas.** A correlação mais alta entre preditores é entre uso de IA e formação (0,51); as restantes são "
@@ -354,7 +360,8 @@ P("**Associação entre as explicativas.** A correlação mais alta entre predit
   "do coeficiente da IA quase não muda (0,165 no modelo simples, 0,179 no múltiplo), pelo que a perda de significância da IA não vem "
   "de multicolinearidade; vem de o modelo passar a descontar a experiência.")
 P("**Resíduos.** Não há curvatura nem padrão nos resíduos contra os valores ajustados, nem evidência de heterocedasticidade "
-  "(Breusch-Pagan p = 0,19); a independência é assumida pelo desenho. A normalidade é rejeitada (p < 0,001), mas quase só por causa "
+  "(Breusch-Pagan p = 0,19); a independência é assumida pelo desenho e o Durbin-Watson (1,95) não indica autocorrelação. A distância de "
+  "Cook máxima é 0,07 (C097), muito abaixo de 1. A normalidade é rejeitada (p < 0,001), mas quase só por causa "
   "de C097, com um resíduo de −60,6: sem C097 os resíduos são compatíveis com a normalidade (Shapiro-Wilk p = 0,97) e o coeficiente "
   "da IA praticamente não muda (0,146; p = 0,38).")
 T(["Variante do modelo M2", "Coef. IA", "Valor-p", "R² ajustado"], [
@@ -424,7 +431,8 @@ for r in ["Coelho, L. (2026). *Modelos Estatísticos para Inteligência Artifici
     par = P(r, align=WD_ALIGN_PARAGRAPH.LEFT); par.paragraph_format.left_indent = Cm(0.8); par.paragraph_format.first_line_indent = Cm(-0.8)
 H("Anexo – Notebook", 2)
 P("Todo o código, outputs e interpretações por pergunta (1.1 a 7.5) estão no notebook **TP1_MEPA_IA_Produtividade.ipynb**, "
-  "executável no Google Colab a partir da pasta partilhada do Google Drive (instruções na secção 0 do notebook).", align=WD_ALIGN_PARAGRAPH.LEFT)
+  "versionado no repositório GitHub do grupo e executável no Google Colab (dados na pasta partilhada do Google Drive) ou localmente "
+  "(instruções na secção 0 do notebook).", align=WD_ALIGN_PARAGRAPH.LEFT)
 
 # rodapé com numeração
 from docx.oxml import OxmlElement as E
