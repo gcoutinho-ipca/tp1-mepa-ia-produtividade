@@ -12,6 +12,16 @@ FIG = os.path.join(PASTA, "figuras")
 AZUL = RGBColor(0x1C, 0x5C, 0xAB)
 
 doc = Document()
+from datetime import datetime, timezone
+_cp = doc.core_properties
+_cp.author = "Gilberto Coutinho; Rúbem Mendes"
+_cp.last_modified_by = "Gilberto Coutinho"
+_cp.title = "Inteligência Artificial e Produtividade - Trabalho Prático 1 de MEPA"
+_cp.subject = "Métodos Estatísticos para Análise de Dados (MEPA) - IPCA 2026/27"
+_cp.keywords = "IA; produtividade; regressão; ANOVA"
+_cp.comments = ""
+_cp.created = _cp.modified = datetime.now(timezone.utc).replace(tzinfo=None, microsecond=0)
+_cp.revision = 1
 sec = doc.sections[0]
 sec.page_height, sec.page_width = Cm(29.7), Cm(21.0)
 for m in ("left_margin", "right_margin"): setattr(sec, m, Cm(2.3))
