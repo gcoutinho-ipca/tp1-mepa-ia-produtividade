@@ -1,6 +1,6 @@
 # Conformidade com o enunciado (`Trabalho Final.pdf`)
 
-Verificação, ponto a ponto, de que o notebook `TP1_MEPA_IA_Produtividade.ipynb` e o relatório `Relatorio_TP1_MEPA_IA_Produtividade.docx` respondem ao que o enunciado pede. Feita em 1 de novembro de 2026 sobre o enunciado (4 páginas no ficheiro), o notebook (123 células, executado do início ao fim sem erros) e o relatório (8 secções, 8 figuras, 9 tabelas).
+Verificação, ponto a ponto, de que o notebook `TP1_MEPA_IA_Produtividade.ipynb` e o relatório `Relatorio_TP1_MEPA_IA_Produtividade.docx` respondem ao que o enunciado pede. Feita em 1 de novembro de 2026 sobre o enunciado (4 páginas no ficheiro), o notebook (123 células, executado do início ao fim sem erros) e o relatório (8 secções, 8 figuras, 10 tabelas, incluindo a correspondência com as perguntas do enunciado no anexo).
 
 ## Resumo
 
@@ -29,7 +29,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 2.2 | Uso médio de IA e valores muito superiores | 2.2 | 3, Figura 1 | OK | 7,7 h; C134 e C035 acima do bigode superior |
 | 2.3 | Departamento mais produtivo vs. mais IA | 2.3 | 3 | OK | Operações vs. Desenvolvimento; não coincidem |
 | 2.4 | Simetria com representações gráficas | 2.4 | 3, Figura 2 | OK | Histograma, caixa de bigodes, Q-Q, Shapiro-Wilk; coeficiente de assimetria −0,61 (reforço) |
-| 2.5 | Mais produtivo vs. mais IA; mesma pessoa? | 2.5 | 3 | OK | 13 empatados em 98 (teto); C134 abaixo da média; não é a mesma pessoa |
+| 2.5 | Mais produtivo vs. mais IA; mesma pessoa? | 2.5 | 3 | OK | 13 empatados em 98 (teto); desempate por qualidade e tarefas indica C237 (reforço); C134 abaixo da média; não é a mesma pessoa |
 | 3.1 | Gráfico uso de IA vs produtividade; tendência | 3.1 | 4, Figura 3 | OK | Dispersão com reta e caixas por quartil |
 | 3.2 | Medida de associação justificada | 3.2 | 4, Tabela 4 | OK | Pearson 0,24 e Spearman 0,27, escolha justificada |
 | 3.3 | Forte, moderada, fraca ou inexistente | 3.3 | 4 | OK | Fraca; r² ≈ 0,06; significância vs intensidade |
@@ -38,7 +38,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 4.1 | Produtividade semelhante entre departamentos? | 4.1 | 5, Figura 4 | OK | Médias 76,5 a 79,2 |
 | 4.2 | Hipóteses estatísticas | 4.2 | 5 | OK | H₀/H₁ para ANOVA e para Kruskal-Wallis |
 | 4.3 | Condições a verificar e como | 4.3 | 5 | OK | Independência, Shapiro-Wilk por grupo, Levene |
-| 4.4 | Análise, resultados e valor-p no contexto | 4.4 | 5, Tabela 5 | OK | F(3, 234) = 0,47, p = 0,70; KW p = 0,71; interpretação do p |
+| 4.4 | Análise, resultados e valor-p no contexto | 4.4 | 5, Tabela 5 | OK | F(3, 234) = 0,47, p = 0,70; KW p = 0,71; interpretação do p; dimensão do efeito η² = 0,006 (reforço) |
 | 4.5 | O que se afirma e o que fica por esclarecer | 4.5 | 5 | OK | Não rejeitar ≠ provar igualdade; limitações |
 | 4.6 | IC 95% para a produtividade média | 4.6 | 5 | OK | [76,4 ; 79,7]; natureza sintética discutida |
 | 5.1 | Equação só com horas de IA? | 5.1 | 6 | OK | OLS, teste ao declive p < 0,001 |
@@ -49,10 +49,10 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 5.6 | Análise de resíduos | 5.6 | 6, Figura 5 | OK | Resíduos vs ajustados, histograma, Q-Q, Shapiro-Wilk, Breusch-Pagan; Durbin-Watson e distância de Cook (reforço); variável omitida detetada |
 | 6.1 | Outras variáveis; risco de indicadores de desempenho | 6.1 | 7.1, Figura 6 | OK | Matriz de correlações; exclusão justificada de tarefas, tempo e qualidade |
 | 6.2 | Modelo com IA + pelo menos 2 variáveis | 6.2 | 7.2, Tabela 6 | OK | IA + experiência + formação + complexidade (n = 233) |
-| 6.3 | Equação e coeficiente da IA ceteris paribus | 6.3 | 7.2 | OK | 0,129 (p = 0,47), interpretação «mantendo o resto constante» |
+| 6.3 | Equação e coeficiente da IA ceteris paribus | 6.3 | 7.2 | OK | 0,129 (p = 0,47), interpretação «mantendo o resto constante»; coeficientes padronizados para comparar importância (reforço) |
 | 6.4 | O coeficiente alterou-se? Interpretação | 6.4 | 7.3, Figura 7 | OK | Queda de 80%; quem absorve a associação |
 | 6.5 | Comparar capacidade explicativa; melhoria relevante? | 6.5 | 7.4, Tabela 7 | OK | Mesmos 233 casos; R² ajustado 0,056 vs 0,267; teste F parcial F(3, 228) = 23,1, p < 0,001 (reforço) |
-| 6.6 | Associação entre explicativas; resíduos | 6.6 | 7.5, Figura 8, Tabela 8 | OK | Correlações, VIF < 1,6, diagnóstico completo, robustez sem C097 e com mais variáveis |
+| 6.6 | Associação entre explicativas; resíduos | 6.6 | 7.5, Figura 8, Tabela 8 | OK | Correlações, VIF < 1,6, diagnóstico completo, robustez sem C097, com mais variáveis e com a complexidade como categórica (reforço) |
 | 6.7 | Modelo mais adequado e porquê | 6.7 | 7.6 | OK | Modelo múltiplo, quatro razões |
 | 7.1 | Quem usa mais IA é mais produtivo? | 7.1 | 8.1 | OK | Sim como tendência fraca; não como regra |
 | 7.2 | Relação mantém-se com outros fatores? | 7.2 | 8.2 | OK | Não; experiência é o fator principal |
@@ -87,14 +87,13 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 
 ## O que não é possível cumprir nos ficheiros, e porquê
 
-1. **Defesa oral (10%)**. Só se cumpre na apresentação. Para a preparar, os pontos de apoio são a tabela «Síntese por nível de análise» (notebook, capítulo 7), a Figura 7 (evolução do coeficiente da IA) e a Tabela 9 do relatório.
+1. **Defesa oral (10%)**. Só se cumpre na apresentação. O ficheiro `GUIAO_DEFESA.md` reúne a mensagem principal, os números a saber e respostas curtas às perguntas prováveis; os pontos de apoio visuais são a Figura 7 (evolução do coeficiente da IA) e a Tabela 9 do relatório.
 2. **Possível página 5 do enunciado**. O rodapé do PDF diz «Página n de 5», mas o ficheiro tem 4 páginas e a página 4 termina na «Nota final». Se existir uma página 5 (prazo, formato de entrega, regras da defesa), não está no ficheiro e não pôde ser verificada. Confirmar na plataforma da unidade curricular.
 3. **Causalidade**. As perguntas 3.5 e 7.5 pedem para explicar se a associação permite afirmar causalidade. Com dados observacionais e transversais não é possível estabelecê-la; o trabalho explica porquê e propõe o desenho que o permitiria (estudo piloto com atribuição aleatória). Não é um incumprimento, é a resposta correta à pergunta.
 4. **Dados sintéticos**. Por natureza, as conclusões ilustram o raciocínio estatístico e não descrevem uma empresa real, como o próprio enunciado avisa.
 
 ## Pendentes que dependem do grupo
 
-- Confirmar a grafia do nome do segundo elemento: o notebook e o relatório usam «Rúbem Mendes»; a versão anterior do README usava «Rúben». O README foi alinhado com os entregáveis.
-- A capa do relatório diz «Outubro de 2026». Se a entrega for em novembro, atualizar a data em `scripts_geracao/build_report.py` e regenerar o relatório.
+- A capa do relatório passou a indicar «Novembro de 2026»; se a entrega for noutro mês, alterar a data em `scripts_geracao/build_report.py` e regenerar o relatório.
 - Convidar o segundo elemento para o repositório GitHub (privado). A conta conhecida é o email institucional `a4563@alunos.ipca.pt`, que não corresponde a nenhum utilizador GitHub público; o convite tem de ser feito por email na página de colaboradores do repositório (Settings › Collaborators › Add people), pois a API só aceita nomes de utilizador.
 - Preparar a defesa oral.
