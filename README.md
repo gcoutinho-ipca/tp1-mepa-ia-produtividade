@@ -20,6 +20,7 @@ Trabalho Prático 1 — **Modelos Estatísticos para Inteligência Artificial** 
 | `Base_Dados_IA_Produtividade.xlsx` | Base de dados (sintética) fornecida com o enunciado. |
 | `Trabalho Final.pdf` | Enunciado do trabalho prático. |
 | `CONFORMIDADE.md` | Verificação ponto a ponto do cumprimento do enunciado e o que não é possível cumprir nos ficheiros, com os motivos. |
+| `GUIAO_DEFESA.md` | Apoio à defesa oral: mensagem principal, números a saber e respostas curtas às perguntas prováveis. |
 | `scripts_geracao/build_nb.py` | Gerou a primeira versão do notebook. É histórico: não voltar a correr, porque sobreporia as edições feitas depois no Colab. |
 | `scripts_geracao/build_report.py` | Gera o relatório `.docx` (precisa das figuras em `figuras/`, produzidas ao executar o notebook). |
 | `requirements.txt` | Dependências para correr localmente. |

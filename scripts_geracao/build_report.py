@@ -108,7 +108,7 @@ par = doc.add_paragraph(); par.alignment = WD_ALIGN_PARAGRAPH.CENTER
 par.add_run("Relatório de investigação\n\n").font.size = Pt(12)
 r = par.add_run("Gilberto Coutinho — n.º 3083\nRúbem Mendes — n.º 4563"); r.font.size = Pt(12); r.bold = True
 par = doc.add_paragraph(); par.alignment = WD_ALIGN_PARAGRAPH.CENTER
-par.add_run("\nDocente: Liliana Coelho\nOutubro de 2026").font.size = Pt(11)
+par.add_run("\nDocente: Liliana Coelho\nNovembro de 2026").font.size = Pt(11)
 doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 
 # ------------------------------------------------------------------ resumo
@@ -212,7 +212,8 @@ P("**Simetria da produtividade.** A distribuição é só aproximadamente simét
   "rejeitá-la sem C097, em boa parte por causa desse teto.")
 F("fig_2_4_produtividade.png", "Distribuição da produtividade: histograma com média e mediana, caixa de bigodes e gráfico Q-Q.")
 P("**Máximos.** A produtividade máxima (98,0) é atingida por 13 colaboradores, com usos de IA entre 4,9 h (C014) e 16,3 h (C036); "
-  "vários são muito experientes (C014, C015 e C178, com 19 anos). O colaborador que mais usa IA (C134, 25 h) tem produtividade "
+  "vários são muito experientes (C014, C015 e C178, com 19 anos). Se for preciso apontar um só, o desempate pela qualidade do trabalho e "
+  "depois pelas tarefas concluídas indica C237 (Desenvolvimento; qualidade 100, 40 tarefas, 12,7 h de IA). O colaborador que mais usa IA (C134, 25 h) tem produtividade "
   "71,6, abaixo da média, e cerca de 71% dos colaboradores são mais produtivos do que ele. Não são as mesmas pessoas. Estes casos "
   "mostram que muito uso de IA não garante produtividade elevada; se existir associação, será uma tendência média.")
 
@@ -259,7 +260,8 @@ T(["Teste", "Estatística", "Valor-p"], [
 ], larg=[5.5, 5.0, 4.0], nota="Tabela 5 – Comparação da produtividade entre departamentos.")
 P("**Interpretação do valor-p.** Um valor-p de 0,70 significa que, se a produtividade média fosse realmente igual nos quatro departamentos, "
   "diferenças entre médias amostrais iguais ou superiores às observadas surgiriam em cerca de 70% das amostras. Como p > 0,05, não "
-  "rejeitamos H₀. Os dois testes concordam e o resultado não depende de C097. Não se justificam, por isso, comparações múltiplas.")
+  "rejeitamos H₀. Os dois testes concordam e o resultado não depende de C097. A dimensão do efeito confirma a leitura: η² = 0,006, isto é, "
+  "o departamento explica apenas 0,6% da variabilidade da produtividade. Não se justificam, por isso, comparações múltiplas.")
 P("**O que se pode e não pode afirmar.** Não há evidência de diferenças entre departamentos, mas isso não prova que as médias sejam "
   "iguais: diferenças pequenas (2 a 3 pontos) podem existir e não ser detetadas, sobretudo em Comunicação (n = 31). "
   "Fica por esclarecer se o efeito da IA difere entre departamentos, se o índice de produtividade é comparável entre tarefas de natureza "
@@ -328,8 +330,9 @@ P("**Coeficiente da IA.** Entre colaboradores com a mesma experiência, formaç�
   "adicional de IA está associada a uma produtividade média apenas 0,13 pontos mais alta, valor não significativo (p = 0,47) cujo "
   "intervalo de confiança inclui o zero e valores negativos. A experiência é o único preditor claramente significativo (mais 1,58 pontos "
   "por ano); a formação em IA tem uma associação positiva no limiar da significância (p = 0,059); a complexidade não é significativa. "
-  "A constante não tem interpretação prática (complexidade 0 está fora do domínio). Não ordenamos a importância das variáveis pelo "
-  "valor absoluto dos coeficientes, porque as unidades são diferentes.")
+  "A constante não tem interpretação prática (complexidade 0 está fora do domínio). Como as unidades são diferentes, comparámos a "
+  "importância relativa das variáveis com coeficientes padronizados (desvios-padrão de produtividade por desvio-padrão da variável): "
+  "experiência 0,50, formação em IA 0,13, uso de IA 0,05 e complexidade −0,05. A experiência pesa cerca de dez vezes mais do que o uso de IA.")
 H("7.3. Alteração do coeficiente da IA", 2)
 F("fig_6_4_coeficiente_ia.png", "Coeficiente do uso de IA (e IC 95%) à medida que se acrescentam variáveis de controlo (mesmos 233 casos).", 14)
 P("Com os mesmos 233 casos, o coeficiente da IA passa de 0,639 (p < 0,001) no modelo simples para 0,129 (p = 0,47) no modelo "
@@ -363,10 +366,13 @@ P("**Resíduos.** Não há curvatura nem padrão nos resíduos contra os valores
   "(Breusch-Pagan p = 0,19); a independência é assumida pelo desenho e o Durbin-Watson (1,95) não indica autocorrelação. A distância de "
   "Cook máxima é 0,07 (C097), muito abaixo de 1. A normalidade é rejeitada (p < 0,001), mas quase só por causa "
   "de C097, com um resíduo de −60,6: sem C097 os resíduos são compatíveis com a normalidade (Shapiro-Wilk p = 0,97) e o coeficiente "
-  "da IA praticamente não muda (0,146; p = 0,38).")
+  "da IA praticamente não muda (0,146; p = 0,38). Tratar a complexidade como categórica, em vez de numérica, também não altera a conclusão "
+  "(coeficiente da IA 0,122; p = 0,50) e não melhora o ajustamento de forma significativa (F(3, 225) = 1,55; p = 0,20), o que valida a "
+  "simplificação assumida na Tabela 1 (Tabela 8).")
 T(["Variante do modelo M2", "Coef. IA", "Valor-p", "R² ajustado"], [
     ["M2", "0,129", "0,471", "0,267"],
     ["M2 sem C097", "0,146", "0,384", "0,302"], ["M2 + carga de trabalho + departamento", "0,144", "0,446", "0,274"],
+    ["M2 com complexidade como categórica", "0,122", "0,500", "0,272"],
 ], larg=[7.0, 2.8, 2.8, 3.0], nota="Tabela 8 – Análise de robustez: a conclusão sobre a IA não depende das opções tomadas.")
 H("7.6. Modelo mais adequado", 2)
 P("Consideramos o modelo múltiplo (M2) o mais adequado para responder à questão de investigação: só ele permite avaliar como a relação "
@@ -407,7 +413,8 @@ B("Desenho observacional e transversal: uma única medição, sem atribuição a
   "Qualidade e medição dos dados: dados sintéticos; índice de produtividade de construção desconhecida (provavelmente ligado a "
   "tarefas, tempo e qualidade); efeitos de teto e de chão (13 colaboradores em 98, 34 com 0,40 h por tarefa) que comprimem a "
   "variabilidade no topo; um valor suspeito (C097); e o uso de IA mede quantidade (horas), não a adequação ou a qualidade do uso.")
-P("Além disso, o modelo final deixa cerca de 73% da variabilidade por explicar e a complexidade, que é ordinal, foi tratada como numérica.")
+P("Além disso, o modelo final deixa cerca de 73% da variabilidade por explicar e a complexidade, que é ordinal, foi tratada como numérica "
+  "(a análise de robustez mostrou que tratá-la como categórica não altera as conclusões).")
 H("8.5. Recomendação à direção: tornar obrigatório o uso de IA?", 2)
 P("Não recomendamos tornar obrigatória a utilização de IA com base nestes resultados. A evidência é de associação, não de "
   "causalidade: a associação bruta já é fraca e desaparece quando se comparam colaboradores com experiência e formação semelhantes. "
@@ -433,6 +440,16 @@ H("Anexo – Notebook", 2)
 P("Todo o código, outputs e interpretações por pergunta (1.1 a 7.5) estão no notebook **TP1_MEPA_IA_Produtividade.ipynb**, "
   "versionado no repositório GitHub do grupo e executável no Google Colab (dados na pasta partilhada do Google Drive) ou localmente "
   "(instruções na secção 0 do notebook).", align=WD_ALIGN_PARAGRAPH.LEFT)
+H("Anexo – Correspondência com as perguntas do enunciado", 2)
+T(["Perguntas do enunciado", "Onde estão respondidas neste relatório"], [
+    ["1.1 a 1.6 – Conhecimento e preparação da base de dados", "1.1 e 1.4: secção 2.1 e Tabela 1; 1.2, 1.3 e 1.5: secção 2.2 e Tabela 2; 1.6: secção 2.3"],
+    ["2.1 a 2.5 – Caracterização dos colaboradores", "Secção 3: Tabela 3 (2.1 e 2.2), Figura 1 (2.2), parágrafo «Departamentos» (2.3), Figura 2 e parágrafo «Simetria» (2.4), parágrafo «Máximos» (2.5)"],
+    ["3.1 a 3.5 – Associação entre IA e produtividade", "Secção 4: Figura 3 e «Tendência» (3.1), Tabela 4 e «Medida de associação» (3.2), «Classificação» (3.3), exemplos concretos (3.4), «Associação não é causalidade» (3.5)"],
+    ["4.1 a 4.6 – Diferenças entre departamentos e intervalo de confiança", "Secção 5: Figura 4 (4.1), «Hipóteses» (4.2), «Condições de aplicação» (4.3), Tabela 5 e «Interpretação do valor-p» (4.4), «O que se pode e não pode afirmar» (4.5), «Intervalo de confiança» (4.6)"],
+    ["5.1 a 5.6 – Regressão linear simples", "Secção 6: equação e coeficientes (5.1 e 5.2), «5 h vs 10 h» (5.3), «Capacidade explicativa» (5.4), «Um colaborador concreto» (5.5), Figura 5 e «Análise de resíduos» (5.6)"],
+    ["6.1 a 6.7 – Regressão linear múltipla", "Secções 7.1 (6.1 e 6.2, Figura 6), 7.2 (6.2 e 6.3, Tabela 6), 7.3 (6.4, Figura 7), 7.4 (6.5, Tabela 7), 7.5 (6.6, Figura 8 e Tabela 8) e 7.6 (6.7)"],
+    ["7.1 a 7.5 – Conclusão da investigação", "Secções 8.1 a 8.5 e Tabela 9 (níveis descritivo, inferencial, explicação estatística e recomendação)"],
+], larg=[6.0, 10.2], nota="Tabela 10 – Correspondência entre as perguntas do enunciado e as secções do relatório. O notebook segue diretamente a numeração do enunciado.")
 
 # rodapé com numeração
 from docx.oxml import OxmlElement as E
