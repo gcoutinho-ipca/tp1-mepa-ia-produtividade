@@ -17,7 +17,7 @@ _cp = doc.core_properties
 _cp.author = "Gilberto Coutinho; Rúbem Mendes"
 _cp.last_modified_by = "Gilberto Coutinho"
 _cp.title = "Inteligência Artificial e Produtividade - Trabalho Prático 1 de MEPA"
-_cp.subject = "Métodos Estatísticos para Análise de Dados (MEPA) - IPCA 2026/27"
+_cp.subject = "Modelos Estatísticos para Inteligência Artificial (MEPA) - IPCA 2026/27"
 _cp.keywords = "IA; produtividade; regressão; ANOVA"
 _cp.comments = ""
 _cp.created = _cp.modified = datetime.now(timezone.utc).replace(tzinfo=None, microsecond=0)
@@ -147,8 +147,8 @@ P("Seguimos as etapas do enunciado, das mais simples às mais exigentes, de modo
 B("preparação dos dados: duplicados, valores em falta, categorias inconsistentes, valores atípicos e limites de escala;",
   "descrição da produtividade e do uso de IA, globalmente e por departamento;",
   "associação entre as duas variáveis, com um gráfico de dispersão e os coeficientes de correlação de Pearson e de Spearman;",
-  "inferência: comparação dos departamentos (ANOVA, confirmada pelo teste de Kruskal-Wallis) e intervalo de confiança para a produtividade média;",
-  "explicação estatística: regressão linear simples e regressão múltipla com fatores anteriores ao desempenho, comparação dos dois modelos e diagnóstico dos resíduos;",
+  "inferência: comparação dos departamentos (ANOVA, confirmada pela ANOVA de Welch e pelo teste de Kruskal-Wallis) e intervalo de confiança para a produtividade média;",
+  "explicação estatística: regressão linear simples e regressão múltipla com fatores anteriores ao desempenho, comparação dos modelos (R² ajustado, teste F parcial, AIC/BIC e validação cruzada), diagnóstico dos resíduos e inferência robusta (erros-padrão HC3 e bootstrap);",
   "conclusões e recomendações, distinguindo associação de causalidade.", num=True)
 P("Usámos apenas os métodos trabalhados nas aulas da unidade curricular. A análise foi feita em Python (pandas, SciPy, "
   "statsmodels, matplotlib/seaborn) num notebook Google Colab, entregue com este relatório. Adotámos um nível de significância "
@@ -262,15 +262,18 @@ P("**Condições de aplicação da ANOVA a um fator.** (1) *Independência*: ass
   "(p = 0,32) e Operações (p = 0,06); rejeitada em Desenvolvimento (p < 0,001), que é o grupo onde está C097. Como o guia das aulas "
   "recorda, a decisão não depende só do valor-p: os grupos são grandes (31 a 85) e o desvio deve-se essencialmente a um valor extremo. "
   "(3) *Homogeneidade de variâncias*: teste de Levene com p = 0,52, não rejeitada; os desvios-padrão vão de 11,6 a 14,0. "
-  "Decidimos usar a ANOVA como teste principal e o Kruskal-Wallis como confirmação não paramétrica.")
+  "Decidimos usar a ANOVA como teste principal e duas confirmações: a ANOVA de Welch, que não exige variâncias iguais (os grupos "
+  "têm dimensões diferentes, de 31 a 85), e o teste de Kruskal-Wallis, não paramétrico.")
 T(["Teste", "Estatística", "Valor-p"], [
     ["ANOVA a um fator", "F(3, 234) = 0,47", "0,702"],
+    ["ANOVA de Welch", "F(3; 105,7) = 0,50", "0,681"],
     ["Kruskal-Wallis", "H(3) = 1,37", "0,713"],
     ["ANOVA sem C097", "—", "0,632"],
 ], larg=[5.5, 5.0, 4.0], nota="Tabela 5 – Comparação da produtividade entre departamentos.")
 P("**Interpretação do valor-p.** Um valor-p de 0,70 significa que, se a produtividade média fosse realmente igual nos quatro departamentos, "
   "diferenças entre médias amostrais iguais ou superiores às observadas surgiriam em cerca de 70% das amostras. Como p > 0,05, não "
-  "rejeitamos H₀. Os dois testes concordam e o resultado não depende de C097. A dimensão do efeito confirma a leitura: η² = 0,006, isto é, "
+  "rejeitamos H₀. Os três testes concordam, pelo que a conclusão não depende de assumir variâncias iguais nem normalidade, e o "
+  "resultado não depende de C097. A dimensão do efeito confirma a leitura: η² = 0,006, isto é, "
   "o departamento explica apenas 0,6% da variabilidade da produtividade. Não se justificam, por isso, comparações múltiplas.")
 P("**O que se pode e não pode afirmar.** Não há evidência de diferenças entre departamentos, mas isso não prova que as médias sejam "
   "iguais: diferenças pequenas (2 a 3 pontos) podem existir e não ser detetadas, sobretudo em Comunicação (n = 31). "
@@ -359,13 +362,22 @@ T(["Critério", "M1: só IA", "M2: IA + 3 variáveis"], [
     ["R²", "0,061", "0,280"], ["R² ajustado", "0,056", "**0,267**"],
     ["Teste F global", "F(1, 231) = 14,9; p < 0,001", "F(4, 228) = 22,1; p < 0,001"],
     ["Teste F parcial (M2 vs M1)", "—", "F(3, 228) = 23,1; p < 0,001"],
-], larg=[5.5, 5.0, 5.5], nota="Tabela 7 – Comparação da capacidade explicativa dos modelos.")
+    ["AIC / BIC (menor é melhor)", "1839,5 / 1846,4", "**1783,6 / 1800,9**"],
+    ["RMSE em validação cruzada (5 partições)", "12,5", "**11,0**"],
+], larg=[5.5, 5.0, 5.5], nota="Tabela 7 – Comparação da capacidade explicativa dos modelos. O modelo alargado com carga de trabalho e "
+   "departamento (8 preditores) tem AIC 1785,2, BIC 1816,3 e RMSE 11,1, todos piores do que o M2.")
 P("A comparação foi feita com as mesmas observações, condição necessária para comparar os R². Como o R² nunca desce quando se "
   "acrescentam variáveis, olhámos sobretudo para o R² ajustado, que penaliza o número de preditores: sobe de 0,056 para 0,267, "
   "quase cinco vezes. Com 233 observações para 4 preditores (cerca de 58 por preditor), o ganho não se explica pela complexidade "
   "adicional, e o teste F parcial aos modelos encaixados confirma que as três variáveis acrescentadas melhoram significativamente o "
-  "ajustamento (F(3, 228) = 23,1; p < 0,001). O modelo com mais variáveis apresenta, portanto, uma melhoria relevante, embora cerca de "
-  "73% da variabilidade fique por explicar.")
+  "ajustamento (F(3, 228) = 23,1; p < 0,001).")
+P("Confirmámos a escolha com dois critérios que não se limitam ao ajustamento na amostra. O AIC e o BIC, que penalizam o número de "
+  "parâmetros, são mínimos no M2; acrescentar ainda a carga de trabalho e o departamento piora ambos, porque os cinco parâmetros "
+  "adicionais não compensam. Na validação cruzada (cada modelo estimado em 4/5 dos colaboradores e avaliado nos restantes, com as "
+  "mesmas partições para todos), o erro médio de previsão desce de 12,5 pontos no M1 para 11,0 no M2, e o modelo alargado não "
+  "melhora (11,1). As variáveis acrescentadas melhoram, portanto, a previsão para colaboradores que o modelo não viu. O modelo com "
+  "mais variáveis apresenta uma melhoria relevante, embora cerca de 73% da variabilidade fique por explicar e um erro típico de "
+  "11 pontos mostre que a produtividade individual continua difícil de prever.")
 H("7.5. Diagnóstico do modelo múltiplo", 2)
 F("fig_6_6_residuos_m2.png", "Diagnóstico de resíduos do modelo múltiplo (M2).")
 P("**Associação entre as explicativas.** A correlação mais alta entre preditores é entre uso de IA e formação (0,51); as restantes são "
@@ -379,14 +391,22 @@ P("**Resíduos.** Não há curvatura nem padrão nos resíduos contra os valores
   "da IA praticamente não muda (0,146; p = 0,38). Tratar a complexidade como categórica, em vez de numérica, também não altera a conclusão "
   "(coeficiente da IA 0,122; p = 0,50) e não melhora o ajustamento de forma significativa (F(3, 225) = 1,55; p = 0,20), o que valida a "
   "simplificação assumida na Tabela 1 (Tabela 8).")
-T(["Variante do modelo M2", "Coef. IA", "Valor-p", "R² ajustado"], [
-    ["M2", "0,129", "0,471", "0,267"],
-    ["M2 sem C097", "0,146", "0,384", "0,302"], ["M2 + carga de trabalho + departamento", "0,144", "0,446", "0,274"],
-    ["M2 com complexidade como categórica", "0,122", "0,500", "0,272"],
-], larg=[7.0, 2.8, 2.8, 3.0], nota="Tabela 8 – Análise de robustez: a conclusão sobre a IA não depende das opções tomadas.")
+P("**Inferência robusta.** Como a normalidade dos resíduos é rejeitada, confirmámos a incerteza do coeficiente da IA por duas vias "
+  "que não dependem dela nem da variância constante: erros-padrão robustos HC3 e bootstrap de pares (2000 reamostragens dos 233 "
+  "colaboradores). Os intervalos obtidos (Tabela 8) são praticamente iguais ao clássico e incluem sempre o zero; no bootstrap, cerca "
+  "de 23% das reamostragens dão um coeficiente nulo ou negativo. No modelo alargado, o VIF máximo sobe para 1,75, ainda muito abaixo de 5.")
+T(["Variante do modelo M2", "Coef. IA", "Valor-p", "IC 95% do coef. IA", "R² ajustado"], [
+    ["M2 (erros-padrão clássicos)", "0,129", "0,471", "−0,22 a 0,48", "0,267"],
+    ["M2 com erros-padrão robustos HC3", "0,129", "0,458", "−0,21 a 0,47", "0,267"],
+    ["M2, bootstrap de pares (2000)", "0,129", "—", "−0,21 a 0,46", "0,267"],
+    ["M2 sem C097", "0,146", "0,384", "—", "0,302"],
+    ["M2 + carga de trabalho + departamento (HC3)", "0,144", "0,450", "−0,23 a 0,52", "0,274"],
+    ["M2 com complexidade como categórica", "0,122", "0,500", "—", "0,272"],
+], larg=[6.2, 2.0, 2.0, 3.4, 2.6], nota="Tabela 8 – Análise de robustez: a conclusão sobre a IA não depende das opções tomadas nem dos pressupostos do modelo.")
 H("7.6. Modelo mais adequado", 2)
 P("Consideramos o modelo múltiplo (M2) o mais adequado para responder à questão de investigação: só ele permite avaliar como a relação "
-  "se altera quando se consideram outros fatores; explica quase cinco vezes mais variabilidade com o mesmo número de observações; "
+  "se altera quando se consideram outros fatores; explica quase cinco vezes mais variabilidade com o mesmo número de observações e "
+  "tem o melhor AIC, BIC e erro de previsão em validação cruzada, mesmo face a um modelo com mais variáveis; "
   "corrige a atribuição indevida à IA de uma associação que pertence sobretudo à experiência; e é simples, usa apenas fatores "
   "anteriores ao desempenho e cumpre razoavelmente os pressupostos. O modelo simples mantém valor descritivo (a associação bruta), "
   "mas não explicativo.")
@@ -397,7 +417,7 @@ P("Seguindo a nota final do enunciado, separamos as conclusões em quatro nívei
 T(["Nível", "Conclusão"], [
     ["Descritivo", "Quem usa mais IA tende a ser ligeiramente mais produtivo (mediana 73,0 no 1.º quartil de uso contra 84,9 no 4.º), "
      "mas com grande variabilidade individual. Os departamentos têm produtividades semelhantes; Desenvolvimento usa mais IA sem ser o mais produtivo."],
-    ["Inferencial", "Associação positiva, fraca e significativa (r = 0,24; p < 0,001). Sem diferenças entre departamentos (p = 0,70). "
+    ["Inferencial", "Associação positiva, fraca e significativa (r = 0,24; p < 0,001). Sem diferenças entre departamentos (ANOVA p = 0,70; Welch p = 0,68; Kruskal-Wallis p = 0,71). "
      "Produtividade média: IC 95% [76,4 ; 79,7]."],
     ["Explicação estatística", "Controlando experiência, formação e complexidade, o coeficiente da IA cai cerca de 80% e deixa de ser significativo "
      "(0,13; p = 0,47). A experiência é o principal fator associado à produtividade (mais 1,6 pontos por ano)."],
@@ -409,8 +429,8 @@ P("Descritivamente sim, mas pouco. Existe uma associação positiva, fraca e est
   "tem 98). A afirmação da direção é verdadeira como tendência média, mas enganadora como regra individual.")
 H("8.2. A relação mantém-se quando se consideram outros fatores?", 2)
 P("Não. Ao comparar colaboradores com a mesma experiência, formação em IA e complexidade de tarefas, a associação entre uso "
-  "de IA e produtividade é pequena e não significativa (0,13 pontos por hora; IC 95% de −0,22 a 0,48). O resultado mantém-se sem C097 "
-  "e com a carga de trabalho e o departamento no modelo.")
+  "de IA e produtividade é pequena e não significativa (0,13 pontos por hora; IC 95% de −0,22 a 0,48). O resultado mantém-se sem C097, "
+  "com a carga de trabalho e o departamento no modelo, com erros-padrão robustos (HC3) e por bootstrap.")
 H("8.3. Resultado mais inesperado", 2)
 P("O que mais nos surpreendeu foi o desaparecimento quase total da associação da IA quando se controlam outros fatores, apesar de a "
   "associação bruta ser claramente significativa (b = 0,639, p < 0,001, contra b = 0,129, p = 0,47, com os mesmos 233 colaboradores). "
