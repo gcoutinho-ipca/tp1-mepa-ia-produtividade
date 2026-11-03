@@ -4,7 +4,7 @@
 
 Documento para o Gilberto e o Rúbem decidirem em conjunto. Regra combinada: **só métodos dados pela docente** e um trabalho fácil de defender.
 
-Fontes lidas (pasta `MEPA - docs apoio`): os 5 PDFs das aulas e a aula extra das classes, os guiões de código das aulas 1 a 8, o teste de preparação e os 28 infográficos. Comparação feita com `TP1_MEPA_IA_Produtividade.ipynb` (o nosso) e `MEIA_G01.ipynb` (do Rúbem).
+Fontes lidas (pasta `MEPA - docs apoio`): os 5 PDFs das aulas e a aula extra das classes, os guiões de código das aulas 1 a 8, o teste de preparação e os 28 infográficos. Comparação feita com `TP1_MEPA_IA_Produtividade.ipynb` (o nosso) e `MEIA_G01.ipynb` (do Rúbem, entretanto retirado do repositório).
 
 ## 1. O que a docente deu (e onde)
 
