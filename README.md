@@ -28,12 +28,15 @@ Trabalho Prático 1 — **Modelos Estatísticos para Inteligência Artificial** 
 
 ## Como trabalhar
 
-O GitHub é a versão de referência do notebook. Os dados estão também na pasta partilhada do Google Drive `MEPA_TP1`, que os dois elementos do grupo têm como atalho em «O meu disco».
+O repositório é público e é a versão de referência do notebook e dos dados. O notebook vai buscar `Base_Dados_IA_Produtividade.xlsx` diretamente ao repositório, por isso corre em qualquer conta Google (incluindo a da docente) sem montar o Drive.
 
 ### No Google Colab
 
-1. **Ficheiro › Abrir notebook › separador GitHub**. Autorizar o acesso ao GitHub com a opção de incluir repositórios privados e escolher este repositório e o notebook. O botão «Abrir no Colab» acima faz o mesmo.
-2. **Ambiente de execução › Executar tudo**. O notebook monta o Google Drive e lê os dados da pasta `MEPA_TP1`.
+1. Clicar no botão «Abrir no Colab» acima, ou **Ficheiro › Abrir notebook › separador GitHub** e escolher este repositório e o notebook.
+2. **Ambiente de execução › Executar tudo**. A primeira célula de código descarrega os dados do repositório.
+
+Para guardar alterações (só os elementos do grupo, que têm de ser colaboradores do repositório):
+
 3. **Ficheiro › Guardar uma cópia no GitHub**, no repositório `gcoutinho-ipca/tp1-mepa-ia-produtividade` e ramo `main`, com uma mensagem curta a descrever a alteração.
 4. Antes de editar, abrir sempre a versão mais recente a partir do GitHub, e combinar quem está a editar o notebook em cada momento, porque o Colab grava o ficheiro inteiro e sobreporia alterações feitas em paralelo.
 
@@ -48,7 +51,14 @@ pip install -r requirements.txt
 jupyter lab                   # ou abrir a pasta no VS Code
 ```
 
-O bloco que monta o Google Drive só corre dentro do Colab. Fora dele, o notebook lê `Base_Dados_IA_Produtividade.xlsx` da pasta atual, onde o ficheiro também está versionado.
+Localmente, o notebook usa o `Base_Dados_IA_Produtividade.xlsx` que já está no clone e não o descarrega.
+
+### Fluxo de trabalho do grupo
+
+1. `git pull` antes de começar, para trazer o que o colega guardou a partir do Colab.
+2. Editar e executar localmente (ou no Colab).
+3. `git commit` e `git push`: o link do Colab passa logo a abrir a nova versão.
+4. Uma pessoa de cada vez no notebook, porque um `.ipynb` editado em paralelo não se funde bem.
 
 Executar tudo de novo sem abrir o Jupyter, e regenerar o relatório a seguir:
 

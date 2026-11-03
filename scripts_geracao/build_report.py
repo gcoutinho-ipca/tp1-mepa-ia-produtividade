@@ -448,7 +448,7 @@ for r in ["Coelho, L. (2026). *Modelos Estatísticos para Inteligência Artifici
     par = P(r, align=WD_ALIGN_PARAGRAPH.LEFT); par.paragraph_format.left_indent = Cm(0.8); par.paragraph_format.first_line_indent = Cm(-0.8)
 H("Anexo – Notebook", 2)
 P("Todo o código, outputs e interpretações por pergunta (1.1 a 7.5) estão no notebook **TP1_MEPA_IA_Produtividade.ipynb**, "
-  "versionado no repositório GitHub do grupo e executável no Google Colab (dados na pasta partilhada do Google Drive) ou localmente "
+  "versionado no repositório GitHub do grupo e executável no Google Colab (dados lidos do próprio repositório) ou localmente "
   "(instruções na secção 0 do notebook).", align=WD_ALIGN_PARAGRAPH.LEFT)
 H("Anexo – Correspondência com as perguntas do enunciado", 2)
 T(["Perguntas do enunciado", "Onde estão respondidas neste relatório"], [
