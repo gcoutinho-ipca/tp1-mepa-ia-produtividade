@@ -23,7 +23,6 @@ Trabalho Prático 1 — **Modelos Estatísticos para Inteligência Artificial** 
 | `GUIAO_DEFESA.md` | Apoio à defesa oral: mensagem principal, diagrama de fluxo do notebook, porque se escolheu cada teste, números a saber e respostas curtas às perguntas prováveis. |
 | `Apresentacao_TP1_MEPA.pptx` | Apresentação para a defesa: porque se escolheu cada método em cada fase, incluindo o tratamento dos valores em falta. Gerada por `scripts_geracao/build_slides.py` com as figuras do notebook. |
 | `DISCUSSAO_METODOS.md` | Comparação entre os métodos usados e os dados nas aulas, divergências com o notebook do Rúbem e decisões tomadas. |
-| `MEIA_G01.ipynb`, `MEIA_G01_Apresentacao.pptx` | Versões de trabalho do Rúbem, guardadas como referência. Não são a entrega. |
 | `scripts_geracao/build_nb.py` | Gerou a primeira versão do notebook. É histórico: não voltar a correr, porque sobreporia as edições feitas depois no Colab. |
 | `scripts_geracao/build_report.py` | Gera o relatório `.docx` (precisa das figuras em `figuras/`, produzidas ao executar o notebook). |
 | `scripts_geracao/build_slides.py` | Gera a apresentação `.pptx` (também precisa das figuras em `figuras/`). |

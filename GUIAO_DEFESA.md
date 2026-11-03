@@ -183,7 +183,7 @@ flowchart TD
 
 ## Alinhamento com a apresentação antiga do Rúbem
 
-Na apresentação antiga (`MEIA_G01_Apresentacao.pptx`) o «modelo múltiplo» tinha também a carga de trabalho e o departamento (coeficiente da IA 0,144) e usava erros-padrão HC3, Welch como teste principal e uma classificação multinomial. No trabalho final o modelo principal é o M2 (0,129), o teste principal é a ANOVA clássica e os métodos que não foram dados em aula saíram. A nova apresentação (`Apresentacao_TP1_MEPA.pptx`) segue o trabalho final. Se perguntarem pela diferença: «o coeficiente da IA fica entre 0,13 e 0,14, conforme se junte ou não a carga e o departamento; escolhemos o modelo mais simples porque o departamento não explica a produtividade (ANOVA p = 0,70)».
+Na apresentação antiga do Rúbem (`MEIA_G01_Apresentacao.pptx`, já retirada do repositório) o «modelo múltiplo» tinha também a carga de trabalho e o departamento (coeficiente da IA 0,144) e usava erros-padrão HC3, Welch como teste principal e uma classificação multinomial. No trabalho final o modelo principal é o M2 (0,129), o teste principal é a ANOVA clássica e os métodos que não foram dados em aula saíram. A nova apresentação (`Apresentacao_TP1_MEPA.pptx`) segue o trabalho final. Se perguntarem pela diferença: «o coeficiente da IA fica entre 0,13 e 0,14, conforme se junte ou não a carga e o departamento; escolhemos o modelo mais simples porque o departamento não explica a produtividade (ANOVA p = 0,70)».
 
 ## Figuras para mostrar
 
