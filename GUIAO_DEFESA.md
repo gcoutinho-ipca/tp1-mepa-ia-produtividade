@@ -14,13 +14,16 @@ A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é 
 | Produtividade média (mediana) | 78,0 (79,4) | 2.1 |
 | Uso médio de IA | 7,7 h/semana | 2.2 |
 | Correlação IA–produtividade (Pearson / Spearman) | 0,24 / 0,27, p < 0,001 | 3.2 |
-| ANOVA departamentos | F(3, 234) = 0,47; p = 0,70; η² = 0,006 | 4.4 |
+| ANOVA departamentos (clássica / Welch / Kruskal-Wallis) | p = 0,70 / 0,68 / 0,71; η² = 0,006 | 4.4 |
 | IC 95% da produtividade média | [76,4 ; 79,7] | 4.6 |
 | Modelo simples | 73,04 + 0,627 × uso_IA; R² = 0,058 | 5.2, 5.4 |
 | Coeficiente da IA no modelo múltiplo | 0,129; p = 0,47; IC −0,22 a 0,48 | 6.3 |
 | Experiência no modelo múltiplo | 1,58 por ano; p < 0,001; beta padronizado 0,50 | 6.3 |
 | R² ajustado simples vs múltiplo (mesmos 233 casos) | 0,056 vs 0,267; F parcial (3, 228) = 23,1 | 6.5 |
-| VIF máximo | 1,51 | 6.6 |
+| AIC / BIC (M1 vs M2) | 1839,5 / 1846,4 vs 1783,6 / 1800,9 | 6.5 |
+| RMSE em validação cruzada (M1 vs M2) | 12,5 vs 11,0 | 6.5 |
+| IC 95% do coef. da IA no M2: HC3 / bootstrap | −0,21 a 0,47 / −0,21 a 0,46 | 6.6 |
+| VIF máximo (M2 / modelo alargado) | 1,51 / 1,75 | 6.6 |
 
 ## Perguntas prováveis e respostas curtas
 
@@ -30,7 +33,7 @@ A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é 
 
 **Porquê Pearson e também Spearman?** Pearson porque as duas variáveis são quantitativas e a relação parece linear. Spearman como confirmação, porque a produtividade não é normal, tem valores atípicos e um teto em 98. Os dois concordam (3.2).
 
-**A normalidade falha num grupo; porque usaram a ANOVA?** Os grupos são grandes (31 a 85), o desvio deve-se essencialmente a um valor extremo e as variâncias são homogéneas (Levene p = 0,52). Decidimos à partida usar a ANOVA como teste principal e o Kruskal-Wallis como confirmação. Deram o mesmo resultado (4.3, 4.4).
+**A normalidade falha num grupo; porque usaram a ANOVA?** Os grupos são grandes (31 a 85), o desvio deve-se essencialmente a um valor extremo e as variâncias são homogéneas (Levene p = 0,52). Decidimos à partida usar a ANOVA como teste principal, com a ANOVA de Welch (não exige variâncias iguais) e o Kruskal-Wallis (não paramétrico) como confirmações. Os três deram o mesmo resultado (4.3, 4.4).
 
 **O que significa p = 0,70 neste contexto?** Se as médias fossem iguais nos quatro departamentos, diferenças como as observadas apareceriam em cerca de 70% das amostras. Não rejeitamos a igualdade, mas isso não a prova: diferenças pequenas podem existir e não ter sido detetadas (4.4, 4.5).
 
@@ -38,7 +41,9 @@ A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é 
 
 **Porque é que o coeficiente da IA cai tanto no modelo múltiplo?** Variável omitida: os colaboradores mais experientes e mais formados usam mais IA (correlações 0,27 e 0,51) e a experiência está fortemente ligada à produtividade (0,50). Não é multicolinearidade, porque os VIF são baixos e o erro-padrão do coeficiente quase não muda (6.4, 6.6).
 
-**O modelo múltiplo é mesmo melhor?** Sim: com os mesmos 233 casos, o R² ajustado passa de 0,06 para 0,27 e o teste F parcial às três variáveis acrescentadas dá p < 0,001. Mesmo assim, 73% da variabilidade fica por explicar (6.5).
+**O modelo múltiplo é mesmo melhor?** Sim: com os mesmos 233 casos, o R² ajustado passa de 0,06 para 0,27 e o teste F parcial às três variáveis acrescentadas dá p < 0,001. O AIC e o BIC são mínimos no M2 e, em validação cruzada, o erro de previsão desce de 12,5 para 11,0 pontos, por isso a melhoria não é só ajustamento na amostra. Acrescentar carga de trabalho e departamento não melhora nenhum destes critérios. Mesmo assim, 73% da variabilidade fica por explicar (6.5).
+
+**Os resíduos não são normais. Os valores-p do modelo múltiplo são de confiança?** Confirmámos com erros-padrão robustos HC3 e com bootstrap de pares (2000 reamostragens): o IC 95% do coeficiente da IA fica entre −0,21 e 0,47, praticamente igual ao clássico, e inclui sempre o zero (6.6).
 
 **Então a IA não serve para nada?** Não é isso que os dados dizem. Dizem que, nestes dados, as horas de IA por si só não estão associadas a mais produtividade depois de descontar a experiência e a formação. A formação em IA tem uma associação positiva no limiar da significância (p = 0,06). O efeito pode depender do tipo de tarefa e da qualidade do uso, que não medimos (7.4, 7.5).
 
@@ -51,3 +56,7 @@ A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é 
 - Figura 3 do relatório (3.1): dispersão com a reta e caixas por quartil, para a tendência fraca com muita dispersão.
 - Figura 7 do relatório (6.4): o coeficiente da IA a encolher à medida que se controlam fatores. É o gráfico que conta a história do «paradoxo».
 - Tabela 9 do relatório ou a síntese final do notebook: os quatro níveis, descritivo, inferencial, explicação estatística e recomendação.
+
+## Alinhamento com a apresentação
+
+Na apresentação (`MEIA_G01_Apresentacao.pptx`) o «modelo múltiplo» é o modelo alargado (IA, experiência, formação, complexidade, carga de trabalho e departamento), com coeficiente da IA 0,144 (IC HC3 −0,23 a 0,52), e o nosso M2 aparece como «parcimonioso». No relatório e no notebook o modelo principal é o M2 (0,129), e o alargado é uma variante de robustez. Os números são os mesmos nos dois documentos e a conclusão também. Na defesa, convém dizer: «o coeficiente da IA cai de 0,64 para 0,13 a 0,14, conforme se inclua ou não a carga de trabalho e o departamento; preferimos o modelo mais simples porque tem melhor AIC, BIC e erro em validação cruzada».
