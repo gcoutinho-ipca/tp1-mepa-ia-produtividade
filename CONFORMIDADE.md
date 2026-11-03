@@ -66,7 +66,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 |---|---|---|
 | Trabalho a pares | OK | Gilberto Coutinho (3083) e Rúbem Mendes (4563), identificados no notebook e no relatório |
 | Entregar relatório de investigação | OK | `Relatorio_TP1_MEPA_IA_Produtividade.docx`: resumo, formulação do problema, 7 secções de análise, conclusões, referências, anexo |
-| Entregar notebook organizado e executável | OK | Secções 0 a 7 na ordem do enunciado; executado do zero em 2026-11-01 (0 erros, cerca de 17 s); corre no Colab (dados no Drive) e localmente (dados no repositório) |
+| Entregar notebook organizado e executável | OK | Secções 0 a 7 na ordem do enunciado; executado do zero em 2026-11-01 (0 erros, cerca de 17 s); corre no Colab e localmente, com os dados lidos do repositório GitHub público (sem depender do Drive) |
 | Em cada etapa, resultados relevantes e interpretação própria | OK | Cada célula de código é seguida de uma célula de interpretação; decisões justificadas (não imputar, manter C097, excluir indicadores de desempenho) |
 | Evitar reprodução de código ou outputs extensos | OK | Sumários `slim`, tabelas curtas; o output mais longo (13 colaboradores com produtividade 98) é a resposta direta à pergunta 2.5 |
 | Dados sintéticos: não concluir sobre empresa real | OK | Dito na introdução, em 4.6 e nas limitações |
@@ -95,5 +95,5 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 ## Pendentes que dependem do grupo
 
 - A capa do relatório passou a indicar «Novembro de 2026»; se a entrega for noutro mês, alterar a data em `scripts_geracao/build_report.py` e regenerar o relatório.
-- Convidar o segundo elemento para o repositório GitHub (privado). A conta conhecida é o email institucional `a4563@alunos.ipca.pt`, que não corresponde a nenhum utilizador GitHub público; o convite tem de ser feito por email na página de colaboradores do repositório (Settings › Collaborators › Add people), pois a API só aceita nomes de utilizador.
+- Convidar o segundo elemento como colaborador do repositório GitHub. O repositório é público, por isso qualquer pessoa o abre e executa no Colab, mas só colaboradores podem guardar alterações. A conta conhecida é o email institucional `a4563@alunos.ipca.pt`, que não corresponde a nenhum utilizador GitHub público; o convite tem de ser feito por email na página de colaboradores do repositório (Settings › Collaborators › Add people), pois a API só aceita nomes de utilizador.
 - Preparar a defesa oral.
