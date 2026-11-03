@@ -20,9 +20,13 @@ Trabalho Prático 1 — **Modelos Estatísticos para Inteligência Artificial** 
 | `Base_Dados_IA_Produtividade.xlsx` | Base de dados (sintética) fornecida com o enunciado. |
 | `Trabalho Final.pdf` | Enunciado do trabalho prático. |
 | `CONFORMIDADE.md` | Verificação ponto a ponto do cumprimento do enunciado e o que não é possível cumprir nos ficheiros, com os motivos. |
-| `GUIAO_DEFESA.md` | Apoio à defesa oral: mensagem principal, números a saber e respostas curtas às perguntas prováveis. |
+| `GUIAO_DEFESA.md` | Apoio à defesa oral: mensagem principal, diagrama de fluxo do notebook, porque se escolheu cada teste, números a saber e respostas curtas às perguntas prováveis. |
+| `Apresentacao_TP1_MEPA.pptx` | Apresentação para a defesa: porque se escolheu cada método em cada fase, incluindo o tratamento dos valores em falta. Gerada por `scripts_geracao/build_slides.py` com as figuras do notebook. |
+| `DISCUSSAO_METODOS.md` | Comparação entre os métodos usados e os dados nas aulas, divergências com o notebook do Rúbem e decisões tomadas. |
+| `MEIA_G01.ipynb`, `MEIA_G01_Apresentacao.pptx` | Versões de trabalho do Rúbem, guardadas como referência. Não são a entrega. |
 | `scripts_geracao/build_nb.py` | Gerou a primeira versão do notebook. É histórico: não voltar a correr, porque sobreporia as edições feitas depois no Colab. |
 | `scripts_geracao/build_report.py` | Gera o relatório `.docx` (precisa das figuras em `figuras/`, produzidas ao executar o notebook). |
+| `scripts_geracao/build_slides.py` | Gera a apresentação `.pptx` (também precisa das figuras em `figuras/`). |
 | `requirements.txt` | Dependências para correr localmente. |
 | `figuras/` | Criada pelo notebook ao executar. Ignorada pelo git, porque os gráficos já estão embebidos no notebook. |
 
@@ -65,4 +69,5 @@ Executar tudo de novo sem abrir o Jupyter, e regenerar o relatório a seguir:
 ```bash
 python -m nbconvert --to notebook --execute --inplace TP1_MEPA_IA_Produtividade.ipynb
 python scripts_geracao/build_report.py .
+python scripts_geracao/build_slides.py .
 ```

@@ -21,7 +21,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 |---|---|---|---|---|---|
 | 1.1 | Registos e colaboradores distintos | 1.1 | 2.1 | OK | 241 registos, 240 identificadores (C001 a C240) |
 | 1.2 | Colaboradores repetidos e resolução | 1.2 | 2.2, Tabela 2 | OK | C084 duplicado em todas as colunas; mantida uma ocorrência |
-| 1.3 | Valores em falta, variáveis e registos | 1.3 | 2.2, Tabela 2 | OK | 9 valores em 8 registos, por variável; sem imputação, justificado |
+| 1.3 | Valores em falta, variáveis e registos | 1.3 | 2.2, Tabela 2 | OK | 8 valores em 8 registos, por variável; sem imputação, justificado |
 | 1.4 | Variáveis quantitativas/qualitativas; variável a explicar | 1.4 | 2.1, Tabela 1 | OK | Tabela de tipos; resposta = produtividade |
 | 1.5 | Categorias inconsistentes e valores a analisar | 1.5 | 2.2 | OK | 3 grafias corrigidas; tetos/chão, C097, 0 h de IA; verificação explícita de valores impossíveis (reforço de 2026-11-01) |
 | 1.6 | Colaboradores disponíveis; variação do n | 1.6 | 2.3 | OK | 240; n = 238 / 236 / 233 consoante a análise |
@@ -46,10 +46,10 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 5.3 | Diferença 5 h vs 10 h e condições | 5.3 | 6 | OK | 3,1 pontos (IC 1,5 a 4,8); condições enumeradas |
 | 5.4 | Proporção da variabilidade explicada | 5.4 | 6 | OK | R² = 0,058 |
 | 5.5 | Colaborador: observado vs estimado | 5.5 | 6 | OK | C001: 68,0 vs 77,9; resíduo −9,9 |
-| 5.6 | Análise de resíduos | 5.6 | 6, Figura 5 | OK | Resíduos vs ajustados, histograma, Q-Q, Shapiro-Wilk, Breusch-Pagan; Durbin-Watson e distância de Cook (reforço); variável omitida detetada |
+| 5.6 | Análise de resíduos | 5.6 | 6, Figura 5 | OK | Resíduos vs ajustados, histograma, Q-Q, Shapiro-Wilk, Breusch-Pagan; distância de Cook (reforço); Durbin-Watson só por completude; variável omitida detetada |
 | 6.1 | Outras variáveis; risco de indicadores de desempenho | 6.1 | 7.1, Figura 6 | OK | Matriz de correlações; exclusão justificada de tarefas, tempo e qualidade |
 | 6.2 | Modelo com IA + pelo menos 2 variáveis | 6.2 | 7.2, Tabela 6 | OK | IA + experiência + formação + complexidade (n = 233) |
-| 6.3 | Equação e coeficiente da IA ceteris paribus | 6.3 | 7.2 | OK | 0,129 (p = 0,47), interpretação «mantendo o resto constante»; coeficientes padronizados para comparar importância (reforço) |
+| 6.3 | Equação e coeficiente da IA ceteris paribus | 6.3 | 7.2 | OK | 0,129 (p = 0,47), interpretação «mantendo o resto constante»; não se ordena a importância pelo tamanho dos coeficientes (unidades diferentes, aula 5) |
 | 6.4 | O coeficiente alterou-se? Interpretação | 6.4 | 7.3, Figura 7 | OK | Queda de 80%; quem absorve a associação |
 | 6.5 | Comparar capacidade explicativa; melhoria relevante? | 6.5 | 7.4, Tabela 7 | OK | Mesmos 233 casos; R² ajustado 0,056 vs 0,267; teste F parcial F(3, 228) = 23,1, p < 0,001 (reforço) |
 | 6.6 | Associação entre explicativas; resíduos | 6.6 | 7.5, Figura 8, Tabela 8 | OK | Correlações, VIF < 1,6, diagnóstico completo, robustez sem C097, com mais variáveis e com a complexidade como categórica (reforço) |
@@ -66,13 +66,13 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 |---|---|---|
 | Trabalho a pares | OK | Gilberto Coutinho (3083) e Rúbem Mendes (4563), identificados no notebook e no relatório |
 | Entregar relatório de investigação | OK | `Relatorio_TP1_MEPA_IA_Produtividade.docx`: resumo, formulação do problema, 7 secções de análise, conclusões, referências, anexo |
-| Entregar notebook organizado e executável | OK | Secções 0 a 7 na ordem do enunciado; executado do zero em 2026-11-01 (0 erros, cerca de 17 s); corre no Colab e localmente, com os dados lidos do repositório GitHub público (sem depender do Drive) |
+| Entregar notebook organizado e executável | OK | Secções 0 a 7 na ordem do enunciado; executado do zero em 2026-11-03 (0 erros, cerca de 25 s); corre no Colab e localmente, com os dados lidos do repositório GitHub público (sem depender do Drive) |
 | Em cada etapa, resultados relevantes e interpretação própria | OK | Cada célula de código é seguida de uma célula de interpretação; decisões justificadas (não imputar, manter C097, excluir indicadores de desempenho) |
 | Evitar reprodução de código ou outputs extensos | OK | Sumários `slim`, tabelas curtas; o output mais longo (13 colaboradores com produtividade 98) é a resposta direta à pergunta 2.5 |
 | Dados sintéticos: não concluir sobre empresa real | OK | Dito na introdução, em 4.6 e nas limitações |
 | Nota final: conclusões remetem à questão central | OK | 7.5 termina a responder à questão central; resumo do relatório idem |
 | Nota final: distinguir descritivo, inferencial, explicação estatística e recomendação | OK | Tabela 9 do relatório; tabela «Síntese por nível de análise» no fim do capítulo 7 do notebook (reforço) |
-| Recursos: opções metodológicas justificadas pelo grupo | OK | Escolha de Pearson/Spearman, ANOVA + Kruskal-Wallis, seleção de variáveis, modelo final, todas justificadas |
+| Recursos: opções metodológicas justificadas pelo grupo | OK | Escolha de Pearson/Spearman, ANOVA + Welch + Kruskal-Wallis, seleção de variáveis, modelo final, todas justificadas |
 
 ## Critérios de avaliação e onde se sustentam
 
@@ -80,8 +80,8 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 |---|---|---|
 | Formulação do problema e estratégia de investigação | 15% | Introdução do notebook; secção 1 do relatório (questão, objetivo, etapas) |
 | Preparação e exploração dos dados | 15% | Capítulos 1 e 2; Tabelas 1 a 3; verificação de duplicados, faltas, categorias, impossíveis, extremos |
-| Seleção e fundamentação metodológica | 25% | 3.2, 4.3, 5.1, 6.1 e 6.2; condições de aplicação verificadas; testes de confirmação; teste F parcial |
-| Interpretação e avaliação dos modelos | 20% | 5.2 a 5.6, 6.3 a 6.7; coeficientes, R² ajustado, resíduos, VIF, Durbin-Watson, Cook, robustez |
+| Seleção e fundamentação metodológica | 25% | 3.2, 4.3, 5.1, 6.1 e 6.2; condições de aplicação verificadas; testes de confirmação (Welch, Kruskal-Wallis); teste F parcial (`compare_f_test`, aula 4); só métodos dados em aula (ver `DISCUSSAO_METODOS.md`) |
+| Interpretação e avaliação dos modelos | 20% | 5.2 a 5.6, 6.3 a 6.7; coeficientes, R² ajustado, resíduos, VIF, Durbin-Watson, Cook, robustez (sem C097, modelo alargado, complexidade categórica, interação IA × experiência) |
 | Discussão crítica e conclusões | 15% | Capítulo 7 e secção 8 do relatório; limitações; associação vs causalidade |
 | Defesa oral e domínio do trabalho | 10% | Não verificável em ficheiros (ver abaixo) |
 
@@ -96,4 +96,6 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 
 - A capa do relatório passou a indicar «Novembro de 2026»; se a entrega for noutro mês, alterar a data em `scripts_geracao/build_report.py` e regenerar o relatório.
 - Convidar o segundo elemento como colaborador do repositório GitHub. O repositório é público, por isso qualquer pessoa o abre e executa no Colab, mas só colaboradores podem guardar alterações. A conta conhecida é o email institucional `a4563@alunos.ipca.pt`, que não corresponde a nenhum utilizador GitHub público; o convite tem de ser feito por email na página de colaboradores do repositório (Settings › Collaborators › Add people), pois a API só aceita nomes de utilizador.
+- O notebook descarrega os dados do repositório `gcoutinho-ipca/tp1-mepa-ia-produtividade`. Se esse repositório voltar a ser privado (por exemplo, ao criar um repositório só para a docente), é preciso mudar `URL_DADOS` na célula de configuração para o repositório público, senão o notebook falha no Colab.
+- Corrigir a apresentação `MEIA_G01_Apresentacao.pptx`: nomes dos autores (slide 1), designação dos modelos alinhada com o relatório (slides 11 e 12; ver `GUIAO_DEFESA.md`), referências a ficheiros que não estão no repositório (`analise.py`, `RELATORIO.md`, `METODOLOGIA.md`) e a sigla «MEIA … G01».
 - Preparar a defesa oral.
