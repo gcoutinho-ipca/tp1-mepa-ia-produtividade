@@ -26,9 +26,9 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 1.5 | Categorias inconsistentes e valores a analisar | 1.5 | 2.2 | OK | 3 grafias corrigidas; tetos/chão, C097, 0 h de IA; verificação explícita de valores impossíveis (reforço de 2026-11-01); coerência entre tarefas, tempo por tarefa e carga (bloco 1.5d, 10 casos marcados e análises repetidas sem eles, reforço de 2026-11-09) |
 | 1.6 | Colaboradores disponíveis; variação do n | 1.6 | 2.3 | OK | 240; n = 238 / 236 / 233 consoante a análise |
 | 2.1 | Produtividade média e representatividade | 2.1 | 3 | OK | 78,0; mediana 79,35; Q1 a Q3 |
-| 2.2 | Uso médio de IA e valores muito superiores | 2.2 | 3, Figura 1 | OK | 7,7 h; C134 e C035 acima do bigode superior |
+| 2.2 | Uso médio de IA e valores muito superiores | 2.2 | 3, Figura 1 | OK | 7,7 h; C134 e C035 acima do limite superior do box-plot |
 | 2.3 | Departamento mais produtivo vs. mais IA | 2.3 | 3 | OK | Operações vs. Desenvolvimento; não coincidem |
-| 2.4 | Simetria com representações gráficas | 2.4 | 3, Figura 2 | OK | Histograma, caixa de bigodes, Q-Q, Shapiro-Wilk; coeficiente de assimetria −0,61 (reforço) |
+| 2.4 | Simetria com representações gráficas | 2.4 | 3, Figura 2 | OK | Histograma, box-plot, Q-Q, Shapiro-Wilk; coeficiente de assimetria −0,61 (reforço) |
 | 2.5 | Mais produtivo vs. mais IA; mesma pessoa? | 2.5 | 3 | OK | 13 empatados em 98 (teto); desempate por qualidade e tarefas indica C237 (reforço); C134 abaixo da média; não é a mesma pessoa |
 | 3.1 | Gráfico uso de IA vs produtividade; tendência | 3.1 | 4, Figura 3 | OK | Dispersão com reta e caixas por quartil |
 | 3.2 | Medida de associação justificada | 3.2 | 4, Tabela 4 | OK | Pearson 0,24 e Spearman 0,27, escolha justificada |

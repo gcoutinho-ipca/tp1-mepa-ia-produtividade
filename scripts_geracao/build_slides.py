@@ -214,7 +214,7 @@ sl = slide("A produtividade não é normal, e isso conta", "Fase 2 · Descrever"
            "O histograma tem a cauda à esquerda, o Q-Q afasta-se na ponta de baixo e há o teto em 98. O Shapiro-Wilk rejeita "
            "a normalidade. Consequência para o resto: sempre que um teste supõe normalidade, juntamos uma confirmação que não "
            "a supõe (Spearman, Kruskal-Wallis) ou repetimos sem o C097.")
-img(sl, "fig_2_4_produtividade.png", 0.6, 1.5, w=12.1)
+img(sl, "fig_2_4_produtividade_sem_nota.png", 0.6, 1.5, w=12.1)
 stat(sl, 0.6, 4.85, 2.4, "78,0", "produtividade média (mediana 79,35)")
 stat(sl, 3.2, 4.85, 2.4, "7,7 h", "uso médio de IA por semana", GREEN)
 decisao(sl, 5.8, 4.85, 6.93, 1.95, "O que isto muda nas escolhas", [
@@ -227,7 +227,7 @@ sl = slide("IA e produtividade: Pearson, confirmado por Spearman", "Fase 3 · As
            "relação é em linha reta, a medida é Pearson. Como a produtividade não é normal e tem valores afastados, juntámos "
            "Spearman, que usa as posições. Dão o mesmo. Pela escala da docente, 0,24 é fraca. O p pequeno só diz que é "
            "diferente de zero, não que é forte. E correlação não é causa.")
-img(sl, "fig_3_1_dispersao.png", 0.6, 1.5, w=7.4)
+img(sl, "fig_3_1_dispersao_sem_nota.png", 0.6, 1.5, w=7.4)
 table(sl, 8.3, 1.5, [2.5, 1.93], [["Medida", "Valor"], ["Pearson r", "0,24 (p < 0,001)"], ["Spearman ρ", "0,27 (p < 0,001)"],
                                    ["Pearson sem C097", "0,25"], ["Sem os 10 incoerentes", "0,24"],
                                    ["r² (variação partilhada)", "6%"]], size=14, alt=0.42)
@@ -295,7 +295,7 @@ sl = slide("Regressão simples: só o uso de IA explica pouco", "Fase 5 · Regre
            "ano de experiência. Os resíduos estão ligados à experiência (r = 0,45). É esse resultado que nos leva ao modelo "
            "múltiplo: não foi uma escolha arbitrária, foi o diagnóstico do modelo simples.")
 text(sl, 0.6, 1.5, 12.1, 0.5, [[("produtividade estimada = 73,04 + 0,627 × horas de IA", {"bold": True, "font": HEAD})]], size=22, align=PP_ALIGN.CENTER)
-img(sl, "fig_5_6_residuos_m1.png", 1.4, 2.1, w=10.5)
+img(sl, "fig_5_6_residuos_m1_sem_nota.png", 1.4, 2.1, w=10.5)
 stat(sl, 0.6, 5.2, 2.3, "6%", "da produtividade explicada (R² = 0,058)", ORANGE, h=1.6)
 stat(sl, 3.1, 5.2, 2.3, "+3,1", "pontos entre 5 h e 10 h (média, não causa)", BLUE, h=1.6)
 decisao(sl, 5.6, 5.2, 7.13, 1.6, "O resultado que decide o passo seguinte", [
@@ -308,7 +308,7 @@ sl = slide("O paradoxo: a experiência estava por trás", "Fase 6 · Regressão 
            "experiência corta o coeficiente para metade. Com tudo, cai 80% e deixa de ser significativo. Quem tem mais "
            "experiência usa mais IA e é mais produtivo: a associação inicial era, em grande parte, a experiência disfarçada. "
            "A experiência dá mais 1,6 pontos por ano e é a única claramente significativa.")
-img(sl, "fig_6_4_coeficiente_ia.png", 0.6, 1.5, w=7.6)
+img(sl, "fig_6_4_coeficiente_ia_sem_nota.png", 0.6, 1.5, w=7.6)
 stat(sl, 8.5, 1.5, 4.23, "0,64 → 0,13", "coeficiente da IA, sem e com os outros fatores (−80%, p = 0,47)", ORANGE, h=1.6)
 stat(sl, 8.5, 3.25, 4.23, "+1,6", "pontos de produtividade por cada ano de experiência (p < 0,001)", GREEN, h=1.45)
 decisao(sl, 0.6, 4.9, 12.13, 1.9, "Como se explica", [
@@ -340,7 +340,7 @@ sl = slide("Pressupostos e robustez do modelo final", "Fase 6 · Regressão múl
            "não rejeita, VIF baixos, Cook abaixo de 1. A normalidade falha quase só por causa do C097: sem ele fica normal. O "
            "Durbin-Watson está lá só por completude, porque não há ordem no tempo. Depois mudámos as nossas escolhas e o "
            "coeficiente da IA ficou sempre entre 0,12 e 0,15, nunca significativo.")
-img(sl, "fig_6_6_residuos_m2.png", 0.6, 1.45, w=12.1)
+img(sl, "fig_6_6_residuos_m2_sem_nota.png", 0.6, 1.45, w=12.1)
 table(sl, 0.6, 4.75, [3.1, 2.7], [["Pressuposto", "Resultado"], ["Variáveis a dizer o mesmo", "VIF ≤ 1,51 (ok abaixo de 5)"],
                                    ["Variância constante", "Breusch-Pagan p = 0,19"], ["Normalidade dos resíduos", "falha só pelo C097"],
                                    ["Observações influentes", "Cook máx. 0,07 (< 1)"]], size=13, alt=0.4)

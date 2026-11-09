@@ -10,7 +10,7 @@ Fontes lidas (pasta `MEPA - docs apoio`): os 5 PDFs das aulas e a aula extra das
 
 | Método | Dado em aula? | Onde |
 |---|---|---|
-| Descritivas, AIQ, histograma, caixa de bigodes | Sim | Aulas 1 e 2, teste de preparação |
+| Descritivas, AIQ, histograma, box-plot | Sim | Aulas 1 e 2, teste de preparação |
 | Assimetria e curtose **como números** | **Não** (só a leitura visual da assimetria) | Aula 1 p25–27 |
 | Gráfico Q-Q, Shapiro-Wilk | Sim | Aulas 4 e 5, guião 3 bloco 13, infográfico «Testes de normalidade» |
 | Levene (com mediana) | Sim | Guião 3 bloco 13, aula 8, infográfico «Levene» |

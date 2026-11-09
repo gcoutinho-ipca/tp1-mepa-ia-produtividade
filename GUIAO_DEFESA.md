@@ -29,7 +29,7 @@ flowchart TD
     J --> K
 
     subgraph P2["2 · Descrição"]
-        K["2.1 média vs mediana<br/>2.2 uso de IA e valores altos (C134, C035)<br/>2.3 por departamento<br/>2.4 simetria: histograma, caixa, Q-Q, Shapiro<br/>2.5 mais produtivo ≠ quem mais usa IA"]
+        K["2.1 média vs mediana<br/>2.2 uso de IA e valores altos (C134, C035)<br/>2.3 por departamento<br/>2.4 simetria: histograma, box-plot, Q-Q, Shapiro<br/>2.5 mais produtivo ≠ quem mais usa IA"]
     end
 
     K --> L
@@ -42,7 +42,7 @@ flowchart TD
     N --> O
 
     subgraph P4["4 · Inferência"]
-        O["4.1 caixas por departamento"] --> Q["4.2 hipóteses H0 / H1"]
+        O["4.1 box-plots por departamento"] --> Q["4.2 hipóteses H0 / H1"]
         Q --> R["4.3 condições<br/>Shapiro por grupo + Levene p = 0,52"]
         R --> S["4.4a ANOVA p = 0,70 + Kruskal-Wallis p = 0,71<br/>4.4b Welch p = 0,68<br/>η² = 0,006 (abaixo de 0,01)"]
         S --> T["4.5 não rejeitar H0 ≠ provar igualdade<br/>sem Tukey"]
@@ -195,6 +195,6 @@ Na apresentação antiga do Rúbem (`MEIA_G01_Apresentacao.pptx`, já retirada d
 
 ## Figuras para mostrar
 
-- Figura 3 do relatório (3.1): dispersão com a reta e caixas por quartil, para mostrar a tendência fraca com muita dispersão.
+- Figura 3 do relatório (3.1): dispersão com a reta e box-plots por quartil, para mostrar a tendência fraca com muita dispersão.
 - Figura 7 do relatório (6.4): o coeficiente da IA a encolher à medida que se juntam variáveis. É o gráfico que conta a história do «paradoxo».
 - Tabela 10 do relatório ou a síntese final do notebook: os quatro níveis (descritivo, inferencial, explicação estatística e recomendação).

@@ -189,7 +189,7 @@ T(["Problema", "O que vimos", "O que decidimos e porquê"], [
      "Mantidos; fica como limitação (não se distinguem os melhores)"],
     ["Valor estranho na produtividade", "C097 tem 19 (o seguinte é 43,5), o que não bate certo com as suas 34 tarefas e qualidade 71",
      "Mantido (não se prova que é erro); análises principais repetidas sem ele"],
-    ["Uso de IA muito alto", "C134 (25 h) e C035 (24,8 h) para lá do bigode da caixa (21,2 h)",
+    ["Uso de IA muito alto", "C134 (25 h) e C035 (24,8 h) acima do limite superior do box-plot (21,2 h)",
      "Mantidos (valores possíveis); verificámos que não pesam demasiado nos modelos"],
     ["Tarefas e tempo incoerentes com a carga", "Tarefas × tempo médio excede a carga do período: C069 tem 35 × 8,74 h = 306 h, "
      "cerca de 7,4 semanas a 41,2 h; com um período de 1 mês, 10 colaboradores ficam acima",
@@ -234,9 +234,9 @@ P("**Produtividade média.** É de 78,0 pontos (desvio-padrão 12,8). A média r
   "(79,35) e metade dos colaboradores tem entre 70,2 e 87,5. Fica um pouco abaixo da mediana por causa de alguns valores muito "
   "baixos (C097 = 19; C129 = 43,5), por isso a mediana descreve um pouco melhor o colaborador típico.")
 P("**Uso de IA.** Em média, os colaboradores usam IA 7,7 h por semana (mediana 7,6 h), com bastante variação (desvio-padrão "
-  "4,9 h). Há mais gente com poucas horas e alguns com muitas. Dois colaboradores ficam para lá do bigode da caixa: C134 (25,0 h) "
+  "4,9 h). Há mais gente com poucas horas e alguns com muitas. Dois colaboradores ficam acima do limite superior do box-plot (outliers): C134 (25,0 h) "
   "e C035 (24,8 h) (Figura 1).")
-F("fig_2_2_uso_ia.png", "Distribuição do uso semanal de IA (histograma e caixa de bigodes).", 15)
+F("fig_2_2_uso_ia.png", "Distribuição do uso semanal de IA (histograma e box-plot; outliers a laranja).", 15)
 P("**Departamentos.** O mais produtivo é Operações (média 79,2), seguido de Comunicação (78,6), Desenvolvimento (78,0) e Análise "
   "de Dados (76,5). O que mais usa IA é Desenvolvimento (9,0 h por semana); Operações vem em segundo (7,2 h). O departamento mais "
   "produtivo não é, portanto, o que mais usa IA. As diferenças de produtividade (no máximo 2,7 pontos) são pequenas face à "
@@ -245,7 +245,7 @@ P("**Simetria da produtividade.** A distribuição não é bem simétrica. A cau
   "mediana e, no gráfico Q-Q, os pontos afastam-se da reta na ponta de baixo (Figura 2). Na ponta de cima vê-se o teto em 98. "
   "O teste de Shapiro-Wilk confirma que a distribuição não é normal (p < 0,001), mesmo sem o C097. Por isso, ao lado de cada "
   "teste que supõe normalidade, usámos um teste de confirmação que não a exige.")
-F("fig_2_4_produtividade.png", "Distribuição da produtividade: histograma com média e mediana, caixa de bigodes e gráfico Q-Q.")
+F("fig_2_4_produtividade.png", "Distribuição da produtividade: histograma com média e mediana, box-plot (outliers a laranja) e gráfico Q-Q.")
 P("**Mais produtivo e quem mais usa IA.** A produtividade máxima (98) é atingida por 13 colaboradores, com usos de IA entre "
   "4,9 h (C014) e 16,3 h (C036); vários têm muita experiência (C014, C015 e C178, com 19 anos). Se for preciso escolher um só, o "
   "desempate pela qualidade e depois pelas tarefas concluídas indica o C237 (Desenvolvimento; qualidade 100, 40 tarefas, 12,7 h "
@@ -281,7 +281,7 @@ P("**Associação não é causa.** Os dados foram recolhidos num único momento 
 
 # ------------------------------------------------------------------ 5
 H("5. Diferenças entre departamentos e produtividade média (inferência)")
-F("fig_4_1_departamentos.png", "Produtividade por departamento (caixas de bigodes, colaboradores e médias).", 14)
+F("fig_4_1_departamentos.png", "Produtividade por departamento (box-plots, colaboradores, médias e outliers a laranja).", 14)
 P("**Hipóteses.** Sendo μ_AD, μ_C, μ_D e μ_O as produtividades médias de cada departamento na população: "
   "H₀: μ_AD = μ_C = μ_D = μ_O; H₁: pelo menos duas médias são diferentes.")
 P("**Condições da ANOVA a um fator.** (1) *Independência*: garantida pela recolha (cada colaborador aparece uma vez e pertence "
