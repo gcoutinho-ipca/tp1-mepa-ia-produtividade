@@ -147,7 +147,10 @@ sl = slide("O que encontrámos nos dados", "Fase 1 · Preparar os dados",
            notas="241 linhas para 240 códigos: o C084 estava copiado (linhas iguais em tudo), ficou uma. Três departamentos "
            "mal escritos, corrigidos para os 4 do dicionário. Oito valores em falta, um em cada registo. O C097 tem 19 de "
            "produtividade, muito abaixo do resto: não há prova de erro, por isso ficou, e repetimos as análises sem ele. "
-           "Há um teto: 13 pessoas com 98, o máximo.")
+           "Há um teto: 13 pessoas com 98, o máximo. Por fim, tarefas vezes tempo médio: o C069 faz 35 tarefas de 8,74 h, "
+           "306 h, cerca de 7,4 semanas de trabalho. O dicionário não diz quanto dura o período; com um mês, 10 pessoas "
+           "ficam acima. Podem ser dados sintéticos gerados sem esta regra, ou tempo de duração e não de esforço. Marcámos, "
+           "mantivemos e repetimos a correlação e a ANOVA sem elas: nada muda.")
 stat(sl, 0.6, 1.6, 2.9, "241 → 240", "linhas → colaboradores: o C084 estava repetido e ficou uma linha")
 stat(sl, 3.7, 1.6, 2.9, "8", "valores em falta, cada um num registo diferente (< 1% por variável)", ORANGE)
 stat(sl, 6.8, 1.6, 2.9, "7 → 4", "grafias de departamento corrigidas para as 4 do dicionário", GREEN)
@@ -156,7 +159,8 @@ decisao(sl, 0.6, 3.5, 6.0, 3.25, "O que decidimos", [
     "Retirar só a cópia do C084: é a mesma pessoa e contaria a dobrar.",
     "Não preencher valores em falta: seria inventar dados.",
     "Manter o C097 (produtividade 19): não se prova que é erro. Um valor estranho investiga-se, não se apaga; repetimos as análises sem ele.",
-    "Manter C134 e C035 (≈ 25 h de IA): são valores possíveis."], size=14)
+    "Manter C134 e C035 (≈ 25 h de IA): são valores possíveis.",
+    "Marcar 10 com tarefas × tempo acima de 1 mês de trabalho (C069: 306 h); sem eles, nada muda."], size=13)
 decisao(sl, 6.8, 3.5, 5.93, 3.25, "O que o dicionário do Excel nos disse", [
     "A produtividade é uma avaliação global feita por avaliadores, não calculada a partir das outras colunas.",
     "Tarefas, tempo por tarefa e qualidade medem o mesmo desempenho, ao mesmo tempo.",
@@ -225,7 +229,8 @@ sl = slide("IA e produtividade: Pearson, confirmado por Spearman", "Fase 3 · As
            "diferente de zero, não que é forte. E correlação não é causa.")
 img(sl, "fig_3_1_dispersao.png", 0.6, 1.5, w=7.4)
 table(sl, 8.3, 1.5, [2.5, 1.93], [["Medida", "Valor"], ["Pearson r", "0,24 (p < 0,001)"], ["Spearman ρ", "0,27 (p < 0,001)"],
-                                   ["Pearson sem C097", "0,25"], ["r² (variação partilhada)", "6%"]], size=14, alt=0.42)
+                                   ["Pearson sem C097", "0,25"], ["Sem os 10 incoerentes", "0,24"],
+                                   ["r² (variação partilhada)", "6%"]], size=14, alt=0.42)
 decisao(sl, 0.6, 4.3, 6.0, 2.5, "Porque estes métodos", [
     "Pearson: duas variáveis quantitativas e relação em linha reta.",
     "Spearman: confirma sem depender da normalidade nem dos valores afastados.",
@@ -392,7 +397,7 @@ box(sl, 7.0, 1.6, 5.43, 4.6, RGBColor(0x26, 0x3A, 0x5A))
 text(sl, 7.3, 1.85, 4.9, 0.5, [[("Limitações", {"bold": True, "color": YELLOW})]], size=20)
 text(sl, 7.3, 2.5, 4.9, 3.6, [
     "Uma só medição, sem distribuição ao acaso do uso de IA: não se pode falar de causa.",
-    "Dados sintéticos, com teto em 98, um valor suspeito (C097) e um uso de IA medido só em horas.",
+    "Dados sintéticos, com teto em 98, um valor suspeito (C097), 10 casos com tarefas × tempo acima da carga e um uso de IA medido só em horas.",
     "O modelo final deixa cerca de 73% da variação por explicar."], size=15, color=WHITE, bullets=True, space=10)
 text(sl, 0.9, 6.6, 11.5, 0.5, ["Obrigado. Perguntas?"], size=18, color=RGBColor(0xCA, 0xDC, 0xFC))
 

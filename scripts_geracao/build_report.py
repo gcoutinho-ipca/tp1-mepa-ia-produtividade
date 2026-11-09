@@ -191,9 +191,21 @@ T(["Problema", "O que vimos", "O que decidimos e porquê"], [
      "Mantido (não se prova que é erro); análises principais repetidas sem ele"],
     ["Uso de IA muito alto", "C134 (25 h) e C035 (24,8 h) para lá do bigode da caixa (21,2 h)",
      "Mantidos (valores possíveis); verificámos que não pesam demasiado nos modelos"],
+    ["Tarefas e tempo incoerentes com a carga", "Tarefas × tempo médio excede a carga do período: C069 tem 35 × 8,74 h = 306 h, "
+     "cerca de 7,4 semanas a 41,2 h; com um período de 1 mês, 10 colaboradores ficam acima",
+     "Marcados e mantidos (o dicionário não define o período); correlação e ANOVA repetidas sem eles"],
 ], larg=[3.3, 6.4, 6.5], nota="Tabela 2 – Síntese da preparação dos dados.")
-P("Não há valores impossíveis (negativos, produtividade acima de 100 ou mais horas de IA do que de trabalho). Os 11 "
+P("Não há valores impossíveis isolados (negativos, produtividade acima de 100 ou mais horas de IA do que de trabalho). Os 11 "
   "colaboradores que não usam IA (0 h) são um valor possível e foram mantidos.")
+P("**Combinações incoerentes.** Alguns colaboradores combinam muitas tarefas com um tempo médio alto. Multiplicando as tarefas "
+  "pelo tempo médio e dividindo pela carga semanal, obtém-se o número de semanas de trabalho que essas tarefas exigiriam. O "
+  "dicionário não diz quanto dura o «período» das tarefas: com um período de uma semana, 174 colaboradores ficariam incoerentes, "
+  "o que mostra que o período tem de ser mais longo; com um mês (4,33 semanas), ficam 10, o mais extremo dos quais é o C069 "
+  "(7,4 semanas). Há duas explicações possíveis, que os dados não permitem distinguir: os dados são sintéticos e as colunas "
+  "parecem ter sido geradas sem esta restrição, ou o tempo por tarefa mede a duração e não o esforço (com tarefas em paralelo, "
+  "8 h de duração não são 8 h de trabalho). Seguimos o critério do C097: os 10 casos foram marcados e mantidos, e a correlação "
+  "e a ANOVA foram repetidas sem eles (Tabelas 5 e 6). Tarefas e tempo por tarefa não entram nos modelos de regressão (secção 7.1), "
+  "por isso esta incoerência não os afeta.")
 
 H("2.3. Faz sentido deixar de fora os registos com falhas?", 2)
 P("Ficam **240 colaboradores**; nenhum foi excluído por inteiro. Cada um dos 8 registos com uma falha só sai das análises "
@@ -253,7 +265,8 @@ P("**Que medida usámos e porquê.** As duas variáveis são quantitativas e a r
   "também o de Spearman, que usa as posições dos valores e é menos sensível a esses problemas, como a docente recomenda.")
 T(["Medida", "Valor", "Valor-p"], [
     ["r de Pearson", "0,241", "< 0,001"], ["ρ de Spearman", "0,266", "< 0,001"],
-    ["r de Pearson sem C097", "0,252", "< 0,001"], ["r² (variação partilhada)", "0,058", "—"],
+    ["r de Pearson sem C097", "0,252", "< 0,001"],
+    ["r de Pearson sem os 10 casos incoerentes (n = 226)", "0,241", "< 0,001"], ["r² (variação partilhada)", "0,058", "—"],
 ], larg=[6.5, 4.0, 4.0], nota="Tabela 5 – Associação entre uso de IA e produtividade (n = 236).")
 P("**Classificação.** A associação é positiva e **fraca**: na escala dos infográficos da docente, valores entre 0,2 e 0,4 são "
   "uma associação fraca. O uso de IA acompanha só cerca de 6% da variação da produtividade. A associação é estatisticamente "
@@ -286,10 +299,11 @@ T(["Teste", "Estatística", "Valor-p"], [
     ["ANOVA de Welch", "F(3; 105,7) = 0,50", "0,681"],
     ["Kruskal-Wallis", "H(3) = 1,37", "0,713"],
     ["ANOVA sem C097", "—", "0,632"],
+    ["ANOVA sem os 10 casos incoerentes (n = 228)", "F(3, 224) = 0,69", "0,557"],
 ], larg=[5.5, 5.0, 4.0], nota="Tabela 6 – Comparação da produtividade entre departamentos.")
 P("**Como se lê o valor-p.** Um valor-p de 0,70 quer dizer que, se a produtividade média fosse mesmo igual nos quatro "
   "departamentos, diferenças como as observadas (ou maiores) apareceriam em cerca de 70% das amostras. Como p > 0,05, não "
-  "rejeitamos H₀. Os três testes concordam e o resultado não depende do C097. O tamanho do efeito confirma: η² = 0,006, ou seja, "
+  "rejeitamos H₀. Os três testes concordam e o resultado não depende do C097 nem dos 10 casos incoerentes. O tamanho do efeito confirma: η² = 0,006, ou seja, "
   "o departamento explica só 0,6% da variação da produtividade, abaixo do limiar de efeito pequeno (0,01) dado pela docente. "
   "Como a ANOVA não rejeitou H₀, não se fazem comparações par a par (Tukey).")
 P("**O que se pode e não pode afirmar.** Não há evidência de diferenças entre departamentos, mas isso não prova que as médias "
@@ -450,7 +464,7 @@ H("8.4. Limitações", 2)
 B("**Tipo de estudo.** Uma única medição, sem distribuição ao acaso do uso de IA. Não permite falar de causa nem excluir que a "
   "relação vá no sentido contrário ou se deva a fatores não medidos (motivação, competência digital, tipo de tarefa, qualidade da ferramenta).",
   "**Qualidade e medição dos dados.** Dados sintéticos; uma produtividade avaliada por avaliadores, com um teto em 98 (13 "
-  "colaboradores) que impede distinguir os melhores; um valor suspeito (C097); e um uso de IA medido em horas, que não diz se a IA "
+  "colaboradores) que impede distinguir os melhores; um valor suspeito (C097); 10 colaboradores com tarefas e tempo por tarefa incoerentes com a carga de trabalho, num período cuja duração o dicionário não define; e um uso de IA medido em horas, que não diz se a IA "
   "é bem usada.")
 P("Além disso, o modelo final deixa cerca de 73% da variação por explicar e a complexidade, que é ordinal, foi tratada como número "
   "(a análise de robustez mostrou que tratá-la como categoria não muda as conclusões).")
