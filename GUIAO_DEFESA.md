@@ -22,7 +22,8 @@ flowchart TD
         F --> G["1.4 tipos de variáveis<br/>1.4b dicionário do Excel<br/>resposta = produtividade"]
         G --> H["1.5a/b corrigir departamentos<br/>7 grafias → 4 categorias"]
         H --> I["1.5c teto, valores estranhos, impossíveis<br/>teto em 98; C097 = 19<br/><i>decisão: manter C097 e repetir sem ele</i>"]
-        I --> J["1.6 casos por análise: 238 · 236 · 233<br/>1.6b os registos com falhas mudam algo?<br/>r = 0,241 (236) vs 0,246 (233): não"]
+        I --> I2["1.5d tarefas × tempo face à carga<br/>1 semana: 174 · 1 mês: 10 · C069 = 7,4 semanas<br/><i>decisão: marcar, manter e repetir sem eles</i>"]
+        I2 --> J["1.6 casos por análise: 238 · 236 · 233<br/>1.6b os registos com falhas mudam algo?<br/>r = 0,241 (236) vs 0,246 (233): não"]
     end
 
     J --> K
@@ -81,6 +82,7 @@ flowchart TD
 | 3 grafias erradas de departamento | 1.5b | Corrigidas (4 departamentos) | Sem isto a ANOVA teria 7 «departamentos», 3 deles com uma pessoa. |
 | C097 com produtividade 19 (o seguinte é 43,5) | 1.5c | Mantido; análises repetidas sem ele | Não há prova de erro e o valor está dentro da escala. A docente diz: um valor estranho investiga-se, não se elimina automaticamente. Sem ele nada muda. |
 | C134 e C035 com cerca de 25 h de IA | 2.2 | Mantidos | São possíveis (meia semana de trabalho) e a distância de Cook mostra que não pesam demasiado. |
+| Tarefas × tempo médio acima da carga (C069: 35 × 8,74 h = 306 h, cerca de 7,4 semanas) | 1.5d | 10 marcados (limite de 1 mês) e mantidos; correlação e ANOVA repetidas sem eles | Nenhum valor é impossível sozinho, só a combinação. O dicionário não define o período, por isso não se apaga com base num limite que é suposição nossa. Sem eles, r = 0,241 e ANOVA p = 0,557: nada muda. |
 | Teto: 13 colaboradores com produtividade 98 | 1.5c | Mantidos; registado como limitação | Não se corrige sem saber como a avaliação é feita. Explica parte da falta de normalidade. |
 | Complexidade é ordinal (1 a 5) | 1.4, 6.6b | Tratada como número | Simplifica o modelo; como categoria nada muda (F parcial p = 0,20). |
 | Tarefas, tempo por tarefa e qualidade | 6.1 | Ficam fora dos modelos | O dicionário diz que são indicadores do mesmo desempenho, medidos ao mesmo tempo (não são componentes da produtividade). Explicar o desempenho com o próprio desempenho não ensina nada. |
@@ -132,6 +134,8 @@ flowchart TD
 |---|---|---|
 | Linhas / colaboradores / casos no modelo múltiplo | 241 / 240 / 233 | 1.1, 1.6 |
 | Valores em falta | 8, um em cada um de 8 registos | 1.3 |
+| Tarefas × tempo acima da carga (1 semana / 1 mês) | 174 / 10 colaboradores; C069 com 7,4 semanas | 1.5d |
+| Sem os 10 casos incoerentes (Pearson / ANOVA) | r = 0,241 / p = 0,557 | 3.2, 4.4 |
 | Produtividade média (mediana) | 78,0 (79,4) | 2.1 |
 | Uso médio de IA | 7,7 h por semana | 2.2 |
 | Correlação IA–produtividade (Pearson / Spearman) | 0,24 / 0,27, p < 0,001 (fraca) | 3.2, 3.3 |
@@ -148,6 +152,10 @@ flowchart TD
 **Porque não preencheram os valores em falta?** São 8 valores, um em cada um de 8 registos, menos de 1% por variável. Preencher pela média seria inventar dados e diminuía a variação real. Cada registo só sai das análises a que lhe falta informação, e verificámos que isso não muda os resultados: a correlação é 0,241 com 236 casos e 0,246 com 233 (1.3, 1.6b).
 
 **Porque mantiveram o C097, com produtividade 19?** Não há prova de erro: o valor está dentro da escala. Seguimos a regra das aulas, investigar em vez de eliminar: repetimos as análises principais sem ele e nenhuma conclusão muda (3.2, 4.4, 5.6, 6.6).
+
+**Há quem faça 35 tarefas com 8,7 h cada. Isso é possível?** Não numa semana nem num mês: o C069 precisaria de 306 h, cerca de 7,4 semanas a 41,2 h. Nenhum dos três valores é impossível sozinho; a combinação é que não bate certo (1.5d). Pode ser porque os dados são sintéticos e as colunas foram geradas sem esta regra, ou porque o tempo por tarefa mede a duração e não o esforço (tarefas em paralelo). Marcámos os casos, mantivemo-los e repetimos a correlação e a ANOVA sem eles: nenhuma conclusão muda. E estas variáveis não entram nos modelos.
+
+**Porquê um limite de 1 mês?** O dicionário só diz «período comum», sem duração. Com uma semana, 174 dos 239 colaboradores com tempo registado ficariam incoerentes, o que mostra que o período tem de ser mais longo. Um mês é uma suposição prudente, que só apanha os casos mais extremos; mesmo assim é uma suposição nossa, por isso mostrámos a tabela com vários limites em vez de esconder a escolha, e por isso marcámos em vez de apagar.
 
 **Porquê Pearson e também Spearman?** Pearson porque as duas variáveis são quantitativas e a relação parece em linha reta. Spearman como confirmação, porque a produtividade não é normal, tem valores afastados e um teto em 98. Dizem o mesmo (3.2).
 

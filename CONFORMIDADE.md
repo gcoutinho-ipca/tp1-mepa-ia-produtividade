@@ -23,7 +23,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | 1.2 | Colaboradores repetidos e resolução | 1.2 | 2.2, Tabela 2 | OK | C084 duplicado em todas as colunas; mantida uma ocorrência |
 | 1.3 | Valores em falta, variáveis e registos | 1.3 | 2.2, Tabela 2 | OK | 8 valores em 8 registos, por variável; sem imputação, justificado |
 | 1.4 | Variáveis quantitativas/qualitativas; variável a explicar | 1.4 | 2.1, Tabela 1 | OK | Tabela de tipos; resposta = produtividade |
-| 1.5 | Categorias inconsistentes e valores a analisar | 1.5 | 2.2 | OK | 3 grafias corrigidas; tetos/chão, C097, 0 h de IA; verificação explícita de valores impossíveis (reforço de 2026-11-01) |
+| 1.5 | Categorias inconsistentes e valores a analisar | 1.5 | 2.2 | OK | 3 grafias corrigidas; tetos/chão, C097, 0 h de IA; verificação explícita de valores impossíveis (reforço de 2026-11-01); coerência entre tarefas, tempo por tarefa e carga (bloco 1.5d, 10 casos marcados e análises repetidas sem eles, reforço de 2026-11-09) |
 | 1.6 | Colaboradores disponíveis; variação do n | 1.6 | 2.3 | OK | 240; n = 238 / 236 / 233 consoante a análise |
 | 2.1 | Produtividade média e representatividade | 2.1 | 3 | OK | 78,0; mediana 79,35; Q1 a Q3 |
 | 2.2 | Uso médio de IA e valores muito superiores | 2.2 | 3, Figura 1 | OK | 7,7 h; C134 e C035 acima do bigode superior |
@@ -79,7 +79,7 @@ Secções do notebook seguem a numeração do enunciado. Secções do relatório
 | Dimensão | Peso | Evidência principal |
 |---|---|---|
 | Formulação do problema e estratégia de investigação | 15% | Introdução do notebook; secção 1 do relatório (questão, objetivo, etapas) |
-| Preparação e exploração dos dados | 15% | Capítulos 1 e 2; Tabelas 1 a 3; verificação de duplicados, faltas, categorias, impossíveis, extremos |
+| Preparação e exploração dos dados | 15% | Capítulos 1 e 2; Tabelas 1 a 3; verificação de duplicados, faltas, categorias, impossíveis, combinações incoerentes, extremos |
 | Seleção e fundamentação metodológica | 25% | 3.2, 4.3, 5.1, 6.1 e 6.2; condições de aplicação verificadas; testes de confirmação (Welch, Kruskal-Wallis); teste F parcial (`compare_f_test`, aula 4); só métodos dados em aula (ver `DISCUSSAO_METODOS.md`) |
 | Interpretação e avaliação dos modelos | 20% | 5.2 a 5.6, 6.3 a 6.7; coeficientes, R² ajustado, resíduos, VIF, Durbin-Watson, Cook, robustez (sem C097, modelo alargado, complexidade categórica, interação IA × experiência) |
 | Discussão crítica e conclusões | 15% | Capítulo 7 e secção 8 do relatório; limitações; associação vs causalidade |
