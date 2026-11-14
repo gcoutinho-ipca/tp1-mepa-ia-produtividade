@@ -4,7 +4,25 @@ Apoio para a parte «Defesa oral e domínio do trabalho» (10% da nota). Tudo o 
 
 ## A mensagem em 60 segundos
 
-A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é verdade como tendência, mas fraca: a correlação entre horas de IA e produtividade é 0,24 e o uso de IA explica cerca de 6% das diferenças de produtividade. Quando comparamos colaboradores com a mesma experiência, formação em IA e complexidade de tarefas, a associação quase desaparece: o coeficiente da IA cai cerca de 80%, de 0,64 para 0,13 pontos por hora, e deixa de ser significativo. O que realmente pesa é a experiência: mais 1,6 pontos por cada ano. Quem usa mais IA é mais produtivo sobretudo porque tem mais experiência e formação. Por isso não recomendamos tornar a IA obrigatória: os dados mostram associação, não causa, e o ganho esperado seria pequeno mesmo no melhor cenário.
+A direção acredita que quem usa mais IA é mais produtivo. Nos dados, isso é verdade como tendência, mas fraca: a correlação entre horas de IA e produtividade é 0,24 e o uso de IA explica cerca de 6% das diferenças de produtividade. Controlando a experiência, a formação em IA e a complexidade das tarefas, a associação quase desaparece: o coeficiente da IA passa de 0,64 para 0,13 pontos por hora (menos 80%) e deixa de haver evidência estatística de associação (p = 0,47). A única explicativa com associação clara é a experiência: mantendo constantes as restantes variáveis, mais 1,6 pontos por cada ano. Quem usa mais IA é mais produtivo sobretudo porque tem mais experiência e formação. Por isso não recomendamos tornar a IA obrigatória: os dados mostram associação, não causa, e o ganho esperado seria pequeno mesmo no melhor cenário.
+
+## Como responder: a forma das aulas
+
+A docente pede sempre o mesmo percurso (aula 3, diapositivo 34): **Pergunta → Método → Python → Resultado → Interpretação → Resposta**. E uma resposta completa tem quatro partes (aula 3, diapositivo 38):
+
+1. **Escolha**: porque é que o método é adequado à pergunta e aos dados.
+2. **Resultado**: o que significa o resultado estatístico.
+3. **Decisão**: rejeitamos ou não rejeitamos H0.
+4. **Resposta**: o que se conclui no contexto da pergunta inicial.
+
+Regras a ter presentes, nas palavras da docente:
+
+- «Não comecem pelo teste. Comecem pela pergunta.» (aula 3, diap. 35)
+- «Não executamos vários testes para escolher aquele que produz o menor p-valor. O método é escolhido antes de olhar para o resultado.» (aula 3, diap. 15)
+- «Não quero apenas "rejeito" ou "não rejeito H0". Quero a conclusão no contexto do problema.» (aula 4, diap. 57)
+- Não rejeitar um teste a um pressuposto é compatibilidade, não prova: «Nenhum teste isolado certifica todo o modelo.» (aula 4, diap. 99)
+
+Vocabulário das aulas a usar na defesa: p-valor; intercepto e declive; diagrama de dispersão; valores extremos ou outliers; variabilidade explicada; associação parcial, «mantendo constantes as restantes variáveis», «controlando»; comparações pós-hoc; homoscedasticidade; «não encontramos evidência de...». O termo «fator de confusão» não aparece nas aulas: se o usarem, expliquem-no como «a associação da IA estimada controlando os outros fatores». O detalhe, com a aula e o diapositivo de cada citação, está em `GUIA_ANALISE_PASSO_A_PASSO.html`.
 
 ## Mapa do notebook
 
@@ -36,7 +54,7 @@ flowchart TD
 
     subgraph P3["3 · Associação"]
         L["3.1 dispersão + reta + quartis"] --> M["3.2 Pearson r = 0,24<br/>Spearman ρ = 0,27"]
-        M --> N["3.3 fraca (escala da docente: 0,2–0,4)<br/>3.4 contraexemplos<br/>3.5 associação ≠ causa"]
+        M --> N["3.3 fraca (escala da docente: 0,2 a 0,4)<br/>3.4 contraexemplos<br/>3.5 associação ≠ causa"]
     end
 
     N --> O
@@ -52,14 +70,14 @@ flowchart TD
     U --> V
 
     subgraph P5["5 · Regressão simples (M1)"]
-        V["5.1–5.2 ŷ = 73,04 + 0,627 × IA"] --> W["5.3 5 h vs 10 h: +3,1<br/>5.4 R² = 0,058<br/>5.5 resíduo do C001 = −9,9"]
+        V["5.1 e 5.2 ŷ = 73,04 + 0,627 × IA"] --> W["5.3 5 h vs 10 h: +3,1<br/>5.4 R² = 0,058<br/>5.5 resíduo do C001 = −9,9"]
         W --> X["5.6a resíduos e pressupostos<br/>5.6b sem C097<br/>5.6c resíduos ligados à experiência (r = 0,45)"]
     end
 
     X -->|"falta uma variável"| Y
 
     subgraph P6["6 · Regressão múltipla (M2)"]
-        Y["6.1 correlações<br/>excluir indicadores do mesmo desempenho"] --> Z["6.2–6.3 M2 = IA + experiência<br/>+ formação + complexidade"]
+        Y["6.1 correlações<br/>excluir indicadores do mesmo desempenho"] --> Z["6.2 e 6.3 M2 = IA + experiência<br/>+ formação + complexidade"]
         Z --> AA["6.4 coeficiente da IA<br/>0,64 → 0,13 (−80%)"]
         AA --> AB["6.5 R² ajustado 0,056 → 0,267<br/>teste F parcial p < 0,001"]
         AB --> AC["6.6a VIF ≤ 1,51 + resíduos<br/>6.6b robustez: sem C097, + carga e departamento,<br/>complexidade como categoria, interação"]
@@ -94,15 +112,15 @@ flowchart TD
     Q1{"Que pergunta?"} -->|"relação entre duas<br/>variáveis quantitativas"| R1{"Relação em linha reta?<br/>(gráfico 3.1)"}
     R1 -->|"sim"| R2["<b>Pearson</b> (principal)"]
     R2 --> R3{"Normalidade, valores afastados<br/>ou teto?"}
-    R3 -->|"sim: Shapiro rejeita,<br/>C097, teto em 98"| R4["+ <b>Spearman</b> como confirmação"]
+    R3 -->|"sim: observações extremas<br/>(C097), acumulação em 98"| R4["+ <b>Spearman</b><br/>(baseia-se nas ordens)"]
 
     Q1 -->|"comparar médias<br/>de 4 grupos"| A1{"Independência?"}
     A1 -->|"sim, pela recolha"| A2{"Normalidade por grupo?<br/>(Shapiro)"}
     A2 -->|"falha só em 1 grupo;<br/>grupos grandes"| A3{"Variâncias iguais?<br/>(Levene p = 0,52)"}
-    A3 -->|"sim"| A4["<b>ANOVA a um fator</b> (principal,<br/>como no fluxograma da docente)"]
-    A4 --> A5["+ <b>Welch</b> (não exige variâncias iguais)<br/>+ <b>Kruskal-Wallis</b> (não exige normalidade)"]
-    A5 --> A6{"p ≤ 0,05?"}
-    A6 -->|"não (0,70)"| A7["Sem Tukey:<br/>só depois de rejeitar H0"]
+    A3 -->|"não rejeitamos<br/>a igualdade"| A4["<b>ANOVA de um fator</b> (método escolhido,<br/>como no guia de escolha da docente)"]
+    A4 --> A5["mesma leitura com <b>Welch</b> (não exige variâncias iguais)<br/>e <b>Kruskal-Wallis</b> (alternativa não paramétrica)"]
+    A5 --> A6{"p &lt; 0,05?"}
+    A6 -->|"não (0,70)"| A7["Sem comparações pós-hoc (Tukey):<br/>só depois de um teste global significativo"]
 
     Q1 -->|"estimar a média"| I1["<b>IC com t de Student</b><br/>σ desconhecido; n = 238"]
 
@@ -116,9 +134,9 @@ flowchart TD
 | Pergunta | Teste escolhido | Alternativa que não usámos (ou só como confirmação) | Porquê |
 |---|---|---|---|
 | A produtividade é normal? (2.4, 4.3) | Shapiro-Wilk + gráfico Q-Q | Kolmogorov-Smirnov | O infográfico da docente recomenda o Shapiro-Wilk para amostras pequenas e médias. O Q-Q mostra *onde* falha (ponta de baixo e teto). |
-| IA e produtividade andam juntas? (3.2) | Pearson | Spearman (confirmação) | Duas variáveis quantitativas com relação em linha reta: Pearson. O Spearman confirma porque não depende da normalidade nem dos valores afastados. Deram o mesmo (0,24 e 0,27). |
-| Diferenças entre 4 departamentos (4.4) | ANOVA a um fator | Vários testes t | Com 4 grupos seriam 6 testes t e o risco de pelo menos uma diferença «falsa» subia para cerca de 26%. A ANOVA faz um único teste. |
-| E se as condições falharem? | Welch e Kruskal-Wallis (confirmação) | Só um deles | Welch protege contra variâncias diferentes (grupos de 31 a 85), Kruskal-Wallis contra a falta de normalidade. Os três dão p ≈ 0,7. |
+| IA e produtividade andam juntas? (3.2) | Pearson | Spearman (ao lado) | Pearson mede a intensidade e direção de uma associação linear entre duas variáveis quantitativas, mas é sensível a observações extremas. O Spearman baseia-se nas ordens. Conduzem à mesma leitura (0,24 e 0,27). |
+| Diferenças entre 4 departamentos (4.4) | ANOVA de um fator | Vários testes t | Com 4 grupos seriam 6 testes t: várias comparações separadas aumentam o risco global de encontrar uma diferença significativa apenas por acaso (cerca de 26%). É precisa uma comparação global. |
+| E se os pressupostos estiverem em dúvida? | Welch e Kruskal-Wallis, definidos à partida | Só um deles | A decisão é a da ANOVA, escolhida antes de ver o resultado. O Welch não exige homogeneidade das variâncias e é mais robusto com grupos de tamanhos diferentes (31 a 85); o Kruskal-Wallis é a alternativa não paramétrica, baseada nas ordens. Os três dão a mesma leitura (p ≈ 0,7). |
 | Variâncias iguais? (4.3) | Levene (com mediana) | Bartlett | O Bartlett é muito sensível à falta de normalidade, que aqui existe. O Levene com mediana é o dos guiões das aulas. |
 | Comparações par a par | Nenhuma | Tukey | Só se faz depois de a ANOVA rejeitar H0. Aqui p = 0,70. |
 | Estimar a média (4.6) | IC com t de Student | IC com a normal (z) | Não conhecemos o desvio-padrão da população. Com n = 238, t e z quase coincidem. |
@@ -126,7 +144,7 @@ flowchart TD
 | O M2 é melhor do que o M1? (6.5) | R² ajustado + teste F parcial | R² simples | O R² sobe sempre que se juntam variáveis; o ajustado desconta-as. O F parcial testa as 3 variáveis juntas. |
 | Variáveis explicativas a dizer o mesmo? (6.6) | VIF | Só a matriz de correlações | O VIF vê a relação de cada variável com *todas* as outras ao mesmo tempo. |
 | Variância dos resíduos constante? (5.6, 6.6) | Gráfico dos resíduos + Breusch-Pagan | Só o gráfico | Primeiro olhar, depois testar, como nas aulas 4 e 5. |
-| Normalidade dos resíduos falha (6.6) | Repetir sem C097 | Transformar a produtividade (log) | A falha vem quase só do C097: sem ele os resíduos ficam normais (p = 0,97) e o coeficiente da IA quase não muda. Transformar mudaria a escala e dificultava explicar os coeficientes. |
+| Evidência contra a normalidade dos resíduos (6.6) | Repetir sem C097 | Transformar a produtividade (log) | No modelo múltiplo, sem o C097 os resíduos ficam compatíveis com a normalidade (p = 0,97) e o coeficiente da IA quase não muda. Transformar mudaria a escala e dificultava explicar os coeficientes. |
 
 ## Números a saber de cor
 
@@ -138,7 +156,7 @@ flowchart TD
 | Sem os 10 casos incoerentes (Pearson / ANOVA) | r = 0,241 / p = 0,557 | 3.2, 4.4 |
 | Produtividade média (mediana) | 78,0 (79,4) | 2.1 |
 | Uso médio de IA | 7,7 h por semana | 2.2 |
-| Correlação IA–produtividade (Pearson / Spearman) | 0,24 / 0,27, p < 0,001 (fraca) | 3.2, 3.3 |
+| Correlação entre IA e produtividade (Pearson / Spearman) | 0,24 / 0,27, p < 0,001 (fraca) | 3.2, 3.3 |
 | Departamentos (ANOVA / Welch / Kruskal-Wallis) | p = 0,70 / 0,68 / 0,71; η² = 0,006 | 4.4 |
 | IC 95% da produtividade média | [76,4 ; 79,7] | 4.6 |
 | Modelo simples | 73,04 + 0,627 × uso de IA; R² = 0,058 | 5.2, 5.4 |
@@ -149,6 +167,8 @@ flowchart TD
 
 ## Perguntas prováveis e respostas curtas
 
+**Fizeram três testes aos departamentos. Não é escolher o p-valor?** Não. O método foi escolhido antes de ver o resultado, seguindo o guia de escolha da docente: normalidade por grupo, Levene (p = 0,52, não rejeitamos a igualdade das variâncias), logo ANOVA clássica. A decisão é a da ANOVA. O Welch e o Kruskal-Wallis foram definidos à partida para ver se a leitura dependia dos pressupostos em dúvida, como o guião da aula 8 pede ao mandar comparar a ANOVA clássica com a de Welch. Os três dão a mesma leitura (4.3, 4.4).
+
 **Porque não preencheram os valores em falta?** São 8 valores, um em cada um de 8 registos, menos de 1% por variável. Preencher pela média seria inventar dados e diminuía a variação real. Cada registo só sai das análises a que lhe falta informação, e verificámos que isso não muda os resultados: a correlação é 0,241 com 236 casos e 0,246 com 233 (1.3, 1.6b).
 
 **Porque mantiveram o C097, com produtividade 19?** Não há prova de erro: o valor está dentro da escala. Seguimos a regra das aulas, investigar em vez de eliminar: repetimos as análises principais sem ele e nenhuma conclusão muda (3.2, 4.4, 5.6, 6.6).
@@ -157,11 +177,11 @@ flowchart TD
 
 **Porquê um limite de 1 mês?** O dicionário só diz «período comum», sem duração. Com uma semana, 174 dos 239 colaboradores com tempo registado ficariam incoerentes, o que mostra que o período tem de ser mais longo. Um mês é uma suposição prudente, que só apanha os casos mais extremos; mesmo assim é uma suposição nossa, por isso mostrámos a tabela com vários limites em vez de esconder a escolha, e por isso marcámos em vez de apagar.
 
-**Porquê Pearson e também Spearman?** Pearson porque as duas variáveis são quantitativas e a relação parece em linha reta. Spearman como confirmação, porque a produtividade não é normal, tem valores afastados e um teto em 98. Dizem o mesmo (3.2).
+**Porquê Pearson e também Spearman?** Primeiro observámos o diagrama de dispersão: tendência ascendente, sem curvatura. Pearson porque mede a associação linear entre duas variáveis quantitativas. Spearman porque o diagrama mostra observações extremas, e Pearson é sensível a elas; o Spearman baseia-se nas ordens. Foi pela mesma razão que apareceu na aula 2. Conduzem à mesma leitura (3.2).
 
 **Porque dizem que a associação é fraca se o p é tão pequeno?** Porque o p diz se a relação é diferente de zero, não se é forte. Com 236 pessoas, até uma relação fraca se distingue do zero. Na escala da docente, 0,2 a 0,4 é fraca (3.3).
 
-**A normalidade falha num grupo, mesmo sem C097. Porque usaram a ANOVA?** Seguimos o fluxograma da docente: com o Levene a não rejeitar (p = 0,52), o teste indicado é a ANOVA. Com grupos grandes (31 a 85) e variâncias parecidas, a ANOVA aguenta bem desvios moderados da normalidade. E confirmámos com o Welch (não exige variâncias iguais) e o Kruskal-Wallis (não exige normalidade): os três dão o mesmo (4.3, 4.4).
+**A normalidade falha num grupo, mesmo sem C097. Porque usaram a ANOVA?** Seguimos o fluxograma da docente: com o Levene a não rejeitar (p = 0,52), o teste indicado é a ANOVA. O guia de escolha diz que a decisão não depende apenas do p-valor: consideram-se os gráficos, os valores extremos e a dimensão amostral. Os grupos são grandes (31 a 85) e o desvio está ligado a um valor extremo. Apresentámos ao lado o Welch (não exige variâncias iguais) e o Kruskal-Wallis (alternativa não paramétrica): a leitura é a mesma (4.3, 4.4).
 
 **O que quer dizer p = 0,70 aqui?** Se as médias fossem iguais nos quatro departamentos, diferenças como as que vimos apareceriam em cerca de 70% das amostras. Não rejeitamos a igualdade, mas isso não a prova (4.4, 4.5).
 
@@ -169,13 +189,13 @@ flowchart TD
 
 **Porque deixaram de fora tarefas concluídas, tempo por tarefa e qualidade?** O dicionário da base diz que são indicadores do mesmo desempenho, medidos ao mesmo tempo. A produtividade não é calculada a partir deles, mas mede a mesma coisa. Explicar o desempenho com outras medidas do desempenho faria subir o R² sem ensinar nada, e podia esconder o efeito da IA se ela atuar através dessas vias (6.1).
 
-**Porque é que o coeficiente da IA cai tanto no modelo múltiplo?** Porque a experiência estava «escondida» por trás da relação: quem tem mais experiência usa mais IA (r = 0,27) e é mais produtivo (r = 0,50). Não é multicolinearidade: os VIF são baixos e o erro-padrão do coeficiente quase não muda (6.4, 6.6).
+**Porque é que o coeficiente da IA cai tanto no modelo múltiplo?** Porque no modelo múltiplo cada coeficiente mede uma associação parcial: a da IA é estimada controlando os outros fatores. Quem tem mais experiência usa mais IA (r = 0,27) e é mais produtivo (r = 0,50). Não há indícios de multicolinearidade problemática: os VIF são baixos e o erro-padrão do coeficiente quase não muda (6.4, 6.6).
 
 **A formação não estará a apagar um efeito real da IA?** Pode estar, se a formação levar a usar mais IA. Por isso mostramos que, só com a experiência (que não resulta de usar IA), o coeficiente já cai para metade (0,31) (6.4).
 
 **O modelo múltiplo é mesmo melhor?** Sim: com os mesmos 233 casos, o R² ajustado passa de 0,06 para 0,27 e o teste F parcial às três variáveis dá p < 0,001. Mesmo assim, 73% da variação fica por explicar (6.5).
 
-**Os resíduos não são normais. Os valores-p valem?** A falha vem quase só do C097. Sem ele, os resíduos do modelo múltiplo são compatíveis com a normalidade (p = 0,97) e o coeficiente da IA quase não muda (0,146; p = 0,38) (6.6).
+**Os resíduos não são normais. Os p-valores valem?** A normalidade dos erros sustenta os testes t, o teste F e os intervalos de confiança, por isso a pergunta é pertinente. No modelo múltiplo, sem o C097 os resíduos são compatíveis com a normalidade (p = 0,97) e o coeficiente da IA quase não muda (0,146; p = 0,38). Atenção: no modelo simples, mesmo sem o C097, ainda há evidência contra a normalidade (p = 0,03), por isso não dizer que «a falha vem só do C097» (5.6, 6.6).
 
 **O que significa o Durbin-Watson aqui?** Quase nada, e a docente diz o mesmo: mede a relação entre resíduos seguidos, o que só faz sentido com uma ordem no tempo. Aqui a ordem é a do código do colaborador. Está lá só por completude; a independência vem da forma como os dados foram recolhidos (5.6).
 
@@ -183,7 +203,7 @@ flowchart TD
 
 **Testaram se o efeito da IA depende da experiência?** Sim: o termo de interação IA × experiência é praticamente nulo (0,028; p = 0,50) (6.6b).
 
-**Então a IA não serve para nada?** Não é isso que os dados dizem. Dizem que, nestes dados, as horas de IA não estão associadas a mais produtividade depois de ter em conta a experiência e a formação. A formação em IA mostra uma relação positiva no limite da significância (p = 0,06). O efeito pode depender do tipo de tarefa e de como a IA é usada, que não foi medido (7.4, 7.5).
+**Então a IA não serve para nada?** Não é isso que os dados dizem. Um p-valor elevado não demonstra ausência de associação (aula 5). Dizem que, nestes dados, as horas de IA não estão associadas a mais produtividade depois de ter em conta a experiência e a formação. A formação em IA mostra uma relação positiva no limite da significância (p = 0,06). O efeito pode depender do tipo de tarefa e de como a IA é usada, que não foi medido (7.4, 7.5).
 
 **O que fariam para provar uma causa?** Um estudo piloto: dar acesso e formação em IA a equipas escolhidas ao acaso, medir a produtividade antes e depois, com uma escala sem teto (7.5).
 
